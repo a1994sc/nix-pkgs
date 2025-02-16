@@ -65,10 +65,32 @@
           ];
         };
         formatter = fmt.config.build.wrapper;
-        packages = nixpkgs.lib.filesystem.packagesFromDirectoryRecursive {
-          inherit (pkgs) callPackage;
-          directory = ./pkgs/core;
-        };
+        packages =
+          nixpkgs.lib.filesystem.packagesFromDirectoryRecursive {
+            inherit (pkgs) callPackage;
+            directory = ./pkgs/core;
+          }
+          # TL;DR: Looks through pkgs/multi,
+          # finds all the folders,
+          # then for each folder finds each version of the main program,
+          # and lastly creates entry of the main program and each version discovered
+          // builtins.listToAttrs (
+            builtins.concatLists (
+              builtins.map
+                (
+                  name:
+                  (builtins.map (ver: {
+                    name = pkgs.lib.removeSuffix ".nix" "${name}-${ver}";
+                    value = pkgs.callPackage ./pkgs/multi/${name}/${ver} { };
+                  }) (builtins.attrNames (builtins.readDir ./pkgs/multi/${name})))
+                )
+                (
+                  builtins.attrNames (
+                    pkgs.lib.attrsets.filterAttrs (_n: v: v == "directory") (builtins.readDir ./pkgs/multi)
+                  )
+                )
+            )
+          );
       }
     );
 }
