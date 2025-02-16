@@ -13,6 +13,7 @@ jobs:
       - uses: cachix/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - id: set-matrix
         env:
           PKG_DIR: pkgs/core
@@ -38,25 +39,14 @@ jobs:
       - uses: cachix/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: cachix/cachix-action@v15
         with:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-
-      - uses: cachix/cachix-action@v15
-        with:
-          name: a1994sc
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-
-      - name: Get changed files in the docs folder
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v45
-        with:
-          files: pkgs/core/${{ matrix.pkg }}.nix
 
       - name: Build updated package
         continue-on-error: true
-        # if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |-
           nix build .#${{ matrix.pkg }}
