@@ -15,7 +15,7 @@ jobs:
         env:
           PKG_DIR: pkgs/core
         run: |-
-          nix flake show --json --all-systems 2>/dev/null | yq -M -p=j -o=j -I=0 '. = (.packages.x86_64-linux | keys) | .[] |= {"pkg": .} | {"matrix": .}' >> $GITHUB_OUTPUT
+          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -p=j -o=j -I=0 '. = (.packages.x86_64-linux | keys) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
 
   release:
     needs: setup
@@ -44,10 +44,7 @@ jobs:
 
       - uses: cachix/cachix-action@v15
         with:
-          name: mycache
-          # If you chose signing key for write access
-          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-          # If you chose API tokens for write access OR if you have a private cache
+          name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Get changed files in the docs folder
