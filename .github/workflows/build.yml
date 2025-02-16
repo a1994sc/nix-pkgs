@@ -1,0 +1,63 @@
+name: "builds"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - id: set-matrix
+        env:
+          PKG_DIR: pkgs/core
+        run: |-
+          nix flake show --json --all-systems 2>/dev/null | yq -M -p=j -o=j -I=0 '. = (.packages.x86_64-linux | keys) | .[] |= {"pkg": .} | {"matrix": .}' >> $GITHUB_OUTPUT
+
+  release:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - uses: cachix/cachix-action@v14
+        with:
+          name: a1994sc
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+      - uses: cachix/cachix-action@v14
+        with:
+          name: mycache
+          # If you chose signing key for write access
+          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+          # If you chose API tokens for write access OR if you have a private cache
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+      - name: Get changed files in the docs folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v45
+        with:
+          files: pkgs/core/${{ matrix.pkg }}.nix
+
+      - name: Build updated package
+        continue-on-error: true
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |-
+          nix build .#{{ matrix.pkg }}
