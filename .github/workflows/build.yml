@@ -6,6 +6,8 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v30
@@ -55,6 +57,6 @@ jobs:
 
       - name: Build updated package
         continue-on-error: true
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        # if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |-
           nix build .#{{ matrix.pkg }}
