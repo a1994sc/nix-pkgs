@@ -57,6 +57,7 @@
             src = ./.;
             hooks = {
               # keep-sorted start case=no
+              commitizen.enable = true;
               check-executables-have-shebangs.enable = true;
               check-shebang-scripts-are-executable.enable = true;
               detect-private-keys.enable = true;
