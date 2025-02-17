@@ -30,6 +30,12 @@
       let
         pkgs = import nixpkgs {
           inherit system;
+          overlays = [
+            (_final: prev: {
+              buildGoModule = prev.buildGo123Module;
+              go = self.packages.${system}.go_1_23;
+            })
+          ];
         };
         fmt = inputs.treefmt-nix.lib.evalModule pkgs (
           { pkgs, ... }:
