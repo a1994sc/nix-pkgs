@@ -18,6 +18,11 @@
     };
     # keep-sorted end
   };
+  nixConfig = {
+    extra-substituters = [
+      "https://a1994sc.cachix.org"
+    ];
+  };
   outputs =
     inputs@{ self, nixpkgs, ... }:
     inputs.flake-utils.lib.eachSystem inputs.flake-utils.lib.defaultSystems (
