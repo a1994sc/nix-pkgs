@@ -50,6 +50,7 @@ buildGoModule rec {
   # Required to workaround test error:
   #   panic: mkdir /homeless-shelter: permission denied
   HOME = "$TMPDIR";
+  env.CGO_ENABLED = 0;
 
   nativeBuildInputs = [ installShellFiles ];
 
