@@ -1,0 +1,38 @@
+name: Update lock
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * FRI'  # every Friday at midnight
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - uses: chainguard-dev/actions/setup-gitsign@main
+
+      - uses: DeterminateSystems/nix-installer-action@e50d5f73bfe71c2dd0aa4218de8f4afa59f8f81d # v16
+
+      - run: |
+          nix flake update
+
+      # - name: Update packages
+      #   run: |
+      #     for pkg in `nix flake show --json --all-systems | yq -p=json '.packages.x86_64-linux | to_entries | .[].key' | grep -E -i -v [0-9]+-[0-9]`; do nix-update -F $pkg; done
+
+      - name: Commit & Push changes
+        uses: actions-js/push@5a7cbd780d82c0c937b5977586e641b2fd94acc5 # v1.5
+        with:
+          branch: 'main'
+          message: "chore(flake): bump inputs"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
