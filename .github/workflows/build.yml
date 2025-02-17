@@ -54,7 +54,9 @@ jobs:
           nix build .#${{ matrix.comp }}
 
   release:
-    needs: compilers
+    needs:
+      - compilers
+      - setup
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
