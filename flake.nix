@@ -31,13 +31,21 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
+            # legacyPackages.x86_64-linux.lib.filesystem.packagesFromDirectoryRecursive { inherit (legacyPackages.x86_64-linux) callPackage; directory = ./pkgs/core;}
             (
-              _final: _prev:
+              final: prev:
               builtins.listToAttrs (
-                builtins.map (name: {
-                  inherit name;
-                  value = self.packages.${system}.${name};
-                }) (builtins.attrNames self.packages.${system})
+                builtins.map
+                  (name: {
+                    inherit name;
+                    value = final.self.packages.${system}.${name};
+                  })
+                  (
+                    builtins.attrNames prev.lib.filesystem.packagesFromDirectoryRecursive {
+                      inherit (prev) callPackage;
+                      directory = ./pkgs/core;
+                    }
+                  )
               )
             )
           ];
