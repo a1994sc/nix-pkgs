@@ -31,10 +31,15 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            (_final: prev: {
-              buildGoModule = prev.buildGo123Module;
-              go = self.packages.${system}.go_1_23;
-            })
+            (
+              _final: _prev:
+              builtins.listToAttrs (
+                builtins.map (name: {
+                  inherit name;
+                  value = self.packages.${system}.${name};
+                }) (builtins.attrNames self.packages.${system})
+              )
+            )
           ];
         };
         fmt = inputs.treefmt-nix.lib.evalModule pkgs (
