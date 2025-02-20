@@ -32,8 +32,8 @@
           inherit system;
           overlays = [
             (_final: prev: {
-              buildGoModule = prev.buildGo123Module;
-              go = self.packages.${system}.go-1-23;
+              buildGoModule = prev.buildGo124Module;
+              go = self.packages.${system}.go-1-24;
             })
           ];
         };
