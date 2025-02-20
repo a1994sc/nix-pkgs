@@ -33,7 +33,7 @@
           overlays = [
             (_final: prev: {
               buildGoModule = prev.buildGo123Module;
-              go = self.packages.${system}.go_1_23;
+              go = self.packages.${system}.go-1-23;
             })
           ];
         };
