@@ -32,3 +32,6 @@ jobs:
           branch: 'main'
           message: "chore(flake): bump inputs"
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run build
+        uses: ./.github/workflows/build.yml
