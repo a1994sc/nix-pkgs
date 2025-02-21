@@ -35,7 +35,7 @@
               final: prev:
               {
                 buildGoModule = prev.buildGo124Module;
-                go = self.packages.${system}.go-1-24;
+                go_1_24 = self.packages.${system}.go-1-24;
               }
               // (import ./pkgs.nix { inherit final self system; })
             )
