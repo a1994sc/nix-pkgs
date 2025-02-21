@@ -31,10 +31,14 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            (_final: prev: {
-              buildGoModule = prev.buildGo124Module;
-              go = self.packages.${system}.go-1-24;
-            })
+            (
+              final: prev:
+              {
+                buildGoModule = prev.buildGo124Module;
+                go = self.packages.${system}.go-1-24;
+              }
+              // (import ./pkgs.nix { inherit final self system; })
+            )
           ];
         };
         fmt = inputs.treefmt-nix.lib.evalModule pkgs (
@@ -57,9 +61,9 @@
             src = ./.;
             hooks = {
               # keep-sorted start case=no
-              commitizen.enable = true;
               check-executables-have-shebangs.enable = true;
               check-shebang-scripts-are-executable.enable = true;
+              commitizen.enable = true;
               detect-private-keys.enable = true;
               end-of-file-fixer.enable = true;
               nixfmt-rfc-style.enable = true;
