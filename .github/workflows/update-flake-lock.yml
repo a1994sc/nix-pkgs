@@ -26,10 +26,6 @@ jobs:
       - run: |
           nix flake update
 
-      # - name: Update packages
-      #   run: |
-      #     for pkg in `nix flake show --json --all-systems | yq -p=json '.packages.x86_64-linux | to_entries | .[].key' | grep -E -i -v [0-9]+-[0-9]`; do nix-update -F $pkg; done
-
       - name: Commit & Push changes
         uses: actions-js/push@5a7cbd780d82c0c937b5977586e641b2fd94acc5 # v1.5
         with:
