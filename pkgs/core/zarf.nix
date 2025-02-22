@@ -71,10 +71,10 @@ buildGoModule rec {
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     export K9S_LOGS_DIR=$(mktemp -d)
-    installShellCompletion --cmd zarf \
-      --bash <($out/bin/zarf completion --no-log-file bash) \
-      --fish <($out/bin/zarf completion --no-log-file fish) \
-      --zsh  <($out/bin/zarf completion --no-log-file zsh)
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   subPackages = [ "." ];

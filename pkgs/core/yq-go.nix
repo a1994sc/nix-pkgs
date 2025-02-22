@@ -5,6 +5,7 @@
   installShellFiles,
   lib,
   runCommand,
+  stdenv,
   yq-go,
   # keep-sorted end
   ...
@@ -31,11 +32,11 @@ buildGoModule rec {
 
   env.CGO_ENABLED = 0;
 
-  postInstall = ''
-    for shell in bash fish zsh; do
-      $out/bin/yq shell-completion $shell > yq.$shell
-      installShellCompletion yq.$shell
-    done
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd yq \
+      --bash <($out/bin/yq completion bash) \
+      --fish <($out/bin/yq completion fish) \
+      --zsh  <($out/bin/yq completion zsh)
   '';
 
   passthru.tests = {

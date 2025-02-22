@@ -56,10 +56,10 @@ buildGoModule rec {
 
     installManPage docs/man/man1/kubectl*
 
-    for shell in bash fish zsh; do
-      $out/bin/kubectl completion $shell > kubectl.$shell
-      installShellCompletion kubectl.$shell
-    done
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
 
     runHook postInstall
   '';

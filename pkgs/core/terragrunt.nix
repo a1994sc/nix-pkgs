@@ -5,6 +5,7 @@
   go-mockery,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -54,7 +55,7 @@ buildGo123Module rec {
 
   env.CGO_ENABLED = 0;
 
-  postInstall = ''
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --bash --name terragrunt <(echo complete -C $out/bin/terragrunt terragrunt)
   '';
 

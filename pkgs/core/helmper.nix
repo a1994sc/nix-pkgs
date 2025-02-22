@@ -47,15 +47,6 @@ buildGoModule rec {
 
   doCheck = false;
 
-  # nativeBuildInputs = [ installShellFiles ];
-
-  # postInstall = ''
-  #   for shell in bash fish zsh; do
-  #     $out/bin/step completion $shell > step.$shell
-  #     installShellCompletion step.$shell
-  #   done
-  # '';
-
   meta = with lib; {
     # keep-sorted start
     description = "Import Helm Charts to OCI registries, optionally with vulnerability patching ";

@@ -1,10 +1,14 @@
 {
-  lib,
+  # keep-sorted start
   buildGoModule,
   fetchFromGitHub,
-  installShellFiles,
   git,
+  installShellFiles,
+  lib,
   openssl,
+  stdenv,
+  # keep-sorted end
+  ...
 }:
 let
   # keep-sorted start prefix_order=pname,version,
@@ -106,11 +110,11 @@ buildGoModule rec {
     rm grype/db/v5/namespace/cpe/namespace_test.go
   '';
 
-  postInstall = ''
-    installShellCompletion --cmd grype \
-      --bash <($out/bin/grype completion bash) \
-      --fish <($out/bin/grype completion fish) \
-      --zsh <($out/bin/grype completion zsh)
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   doCheck = false;

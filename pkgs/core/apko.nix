@@ -1,8 +1,12 @@
 {
-  lib,
+  # keep-sorted start
   buildGoModule,
   fetchFromGitHub,
   installShellFiles,
+  lib,
+  stdenv,
+  # keep-sorted end
+  ...
 }:
 let
   # keep-sorted start prefix_order=pname,version,
@@ -62,11 +66,11 @@ buildGoModule {
     "-skip=TestInitDB_ChainguardDiscovery"
   ];
 
-  postInstall = ''
-    installShellCompletion --cmd apko \
-      --bash <($out/bin/apko completion bash) \
-      --fish <($out/bin/apko completion fish) \
-      --zsh <($out/bin/apko completion zsh)
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   doInstallCheck = true;

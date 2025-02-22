@@ -4,6 +4,7 @@
   fetchFromGitHub,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -57,11 +58,11 @@ buildGoModule rec {
 
   env.CGO_ENABLED = 0;
 
-  postInstall = ''
-    for shell in bash fish zsh; do
-      $out/bin/helm completion $shell > helm.$shell
-      installShellCompletion helm.$shell
-    done
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   meta = with lib; {

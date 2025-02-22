@@ -85,10 +85,10 @@ buildGoModule rec {
       export USER=nixbld
     '';
 
-  postInstall = ''
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd werf \
       --bash <($out/bin/werf completion --shell=bash) \
-      --zsh <($out/bin/werf completion --shell=zsh)
+      --zsh  <($out/bin/werf completion --shell=zsh)
   '';
 
   passthru.tests.version = testers.testVersion {

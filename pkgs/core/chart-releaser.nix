@@ -5,6 +5,7 @@
   git,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -45,11 +46,11 @@ buildGoModule rec {
     git
   ];
 
-  postInstall = ''
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd cr \
       --bash <($out/bin/cr completion bash) \
-      --zsh <($out/bin/cr completion zsh) \
       --fish <($out/bin/cr completion fish) \
+      --zsh  <($out/bin/cr completion zsh)
   '';
 
   env.CGO_ENABLED = 0;

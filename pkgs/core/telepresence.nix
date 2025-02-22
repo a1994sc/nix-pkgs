@@ -4,7 +4,9 @@
   fetchFromGitHub,
   fuse,
   go-fuseftp,
+  installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -34,9 +36,9 @@ buildGoModule rec {
     cp ${go-fuseftp}/bin/main ./pkg/client/remotefs/fuseftp.bits
   '';
 
-  # nativeBuildInputs = [
-  #   installShellFiles
-  # ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   ldflags = [
     "-s"
@@ -47,6 +49,13 @@ buildGoModule rec {
   subPackages = [ "cmd/telepresence" ];
 
   env.CGO_ENABLED = 0;
+
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
+  '';
 
   meta = with lib; {
     # keep-sorted start

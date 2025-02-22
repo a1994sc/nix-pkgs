@@ -4,6 +4,7 @@
   fetchFromGitHub,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -64,12 +65,12 @@ buildGoModule rec {
     runHook postInstall
   '';
 
-  postInstall = ''
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     export K9S_LOGS_DIR=$(mktemp -d)
-    for shell in bash fish zsh; do
-      $out/bin/uds completion --no-log-file $shell > uds.$shell
-      installShellCompletion uds.$shell
-    done
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --fish <($out/bin/${pname} completion fish) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   meta = with lib; {

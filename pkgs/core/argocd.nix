@@ -4,6 +4,7 @@
   fetchFromGitHub,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -70,10 +71,10 @@ buildGoModule rec {
     $out/bin/argocd version --client | grep ${src.rev} > /dev/null
   '';
 
-  postInstall = ''
-    installShellCompletion --cmd argocd \
-      --bash <($out/bin/argocd completion bash) \
-      --zsh <($out/bin/argocd completion zsh)
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   meta = with lib; {

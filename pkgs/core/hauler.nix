@@ -1,13 +1,13 @@
 {
   # keep-sorted start
   buildGoModule,
+  cosign-hauler,
   fetchFromGitHub,
   fetchurl,
   installShellFiles,
   lib,
   stdenv,
   system,
-  cosign-hauler,
   # keep-sorted end
   ...
 }:

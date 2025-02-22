@@ -5,8 +5,10 @@
   fetchFromGitHub,
   installShellFiles,
   lib,
+  stdenv,
   testers,
-# keep-sorted end
+  # keep-sorted end
+  ...
 }:
 let
   # keep-sorted start prefix_order=pname,version,
@@ -42,13 +44,13 @@ buildGoModule rec {
       "-X ${t}.gitVersion=v${version}"
     ];
 
-  postInstall = ''
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     # errors attempting to write config to read-only $HOME
     export HOME=$TMPDIR
 
-    installShellCompletion --cmd clusterctl \
-      --bash <($out/bin/clusterctl completion bash) \
-      --zsh <($out/bin/clusterctl completion zsh)
+    installShellCompletion --cmd ${pname} \
+      --bash <($out/bin/${pname} completion bash) \
+      --zsh  <($out/bin/${pname} completion zsh)
   '';
 
   passthru.tests.version = testers.testVersion {

@@ -4,6 +4,7 @@
   fetchFromGitHub,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -47,11 +48,11 @@ buildGoModule rec {
     $out/bin/cilium version --client
   '';
 
-  postInstall = ''
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd cilium \
       --bash <($out/bin/cilium completion bash) \
       --fish <($out/bin/cilium completion fish) \
-      --zsh <($out/bin/cilium completion zsh)
+      --zsh  <($out/bin/cilium completion zsh)
   '';
 
   meta = with lib; {

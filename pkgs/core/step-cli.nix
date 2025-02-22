@@ -4,6 +4,7 @@
   fetchFromGitHub,
   installShellFiles,
   lib,
+  stdenv,
   # keep-sorted end
   ...
 }:
@@ -45,11 +46,11 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  postInstall = ''
-    for shell in bash fish zsh; do
-      $out/bin/step completion $shell > step.$shell
-      installShellCompletion step.$shell
-    done
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd step \
+      --bash <($out/bin/step completion bash) \
+      --fish <($out/bin/step completion fish) \
+      --zsh  <($out/bin/step completion zsh)
   '';
 
   meta = with lib; {
