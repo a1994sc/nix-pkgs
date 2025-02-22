@@ -3,8 +3,8 @@
   buildGoModule,
   fetchFromGitHub,
   fuse,
-  lib,
   go-fuseftp,
+  lib,
   # keep-sorted end
   ...
 }:

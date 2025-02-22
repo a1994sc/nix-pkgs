@@ -8,8 +8,8 @@
 }:
 let
   # keep-sorted start prefix_order=pname,version,
-  version = "0.1.7";
   pname = "helm-images";
+  version = "0.1.7";
   sha256 = "sha256-nO5zxzO/USdcn6yTdXE/KP76z5stAljFtbASCUSK6zw=";
   vendorHash = "sha256-oWf4y/5bp1gaDd2UmW0QCNEF7jiLVEYwhMlyJhBLH9Q=";
   # keep-sorted end
