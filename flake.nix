@@ -79,6 +79,7 @@
             pkgs.nix-update
             pkgs.nix-prefetch
             pkgs.nix-output-monitor
+            pkgs.cachix
           ];
         };
         formatter = fmt.config.build.wrapper;
