@@ -37,6 +37,7 @@
                 buildGoModule = prev.buildGo124Module;
                 go_1_24 = self.packages.${system}.go-1-24;
                 go-fuseftp = self.packages.${system}.go-fuseftp;
+                cosign-hauler = self.packages.${system}.cosign-hauler;
               }
               // (import ./pkgs.nix { inherit final self system; })
             )
