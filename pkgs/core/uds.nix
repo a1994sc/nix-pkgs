@@ -34,6 +34,9 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
+  # Required to make shell completion to work
+  #   panic: mkdir /homeless-shelter: permission denied
+  HOME = "$TMPDIR";
   env.CGO_ENABLED = 0;
 
   ldflags = [

@@ -48,6 +48,9 @@ buildGoModule rec {
 
   subPackages = [ "cmd/telepresence" ];
 
+  # Required to make shell completion to work
+  #   panic: mkdir /homeless-shelter: permission denied
+  HOME = "$TMPDIR";
   env.CGO_ENABLED = 0;
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''

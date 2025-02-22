@@ -61,10 +61,10 @@ buildGoModule rec {
   '';
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-    installShellCompletion --cmd ${pname} \
-      --bash <($out/bin/${pname} completion bash) \
-      --fish <($out/bin/${pname} completion fish) \
-      --zsh  <($out/bin/${pname} completion zsh)
+    installShellCompletion --cmd flux \
+      --bash <($out/bin/flux completion bash) \
+      --fish <($out/bin/flux completion fish) \
+      --zsh  <($out/bin/flux completion zsh)
   '';
 
   passthru.updateScript = ./update.sh;
