@@ -8,7 +8,7 @@ let
   pname = "wasm-pkg-tools";
   version = "0.10.0";
   sha256 = "sha256-VZ+rUZi6o2onMFxK/BMyi6ZjuDS0taJh5w3r33KCZTU=";
-  cargoHash = "sha256-FtZUQH5LrOG1BTBWIQsJwrWHb07W+J+OBpzNxAmYALM=";
+  cargoHash = "sha256-NwGxb3Q/LKtVaeCCSjS/dMX2PVjCo/ICDIq5hxpMbbM=";
   # keep-sorted end
   rev = "v" + version;
 in
