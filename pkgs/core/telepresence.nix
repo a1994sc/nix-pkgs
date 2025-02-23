@@ -63,7 +63,7 @@ buildGoModule rec {
   meta = with lib; {
     # keep-sorted start
     description = "Local development against a remote Kubernetes or OpenShift cluster";
-    homepage = "https://telepresence.io";
+    homepage = "https://github.com/telepresenceio/telepresence";
     license = [ licenses.asl20 ];
     mainProgram = pname;
     platforms = platforms.linux;
