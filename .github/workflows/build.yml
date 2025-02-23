@@ -48,12 +48,10 @@ jobs:
         with:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          # pushFilter: (-source$|-go-modules$)
 
       - name: Build updated package
-        continue-on-error: true
         run: |-
-          nix build .#${{ matrix.comp }}
+          nix develop .#ci --command bash -c "nom build .#${{ matrix.comp }}"
 
   release:
     needs:
@@ -82,9 +80,7 @@ jobs:
         with:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          # pushFilter: (-source$|-go-modules$)
 
       - name: Build updated package
-        continue-on-error: true
         run: |-
-          nix build .#${{ matrix.pkg }}
+          nix develop .#ci --command bash -c "nom build .#${{ matrix.comp }}"
