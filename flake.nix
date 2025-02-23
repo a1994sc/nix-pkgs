@@ -72,6 +72,9 @@
               commitizen.enable = true;
               detect-private-keys.enable = true;
               end-of-file-fixer.enable = true;
+              end-of-file-fixer.excludes = [
+                ".cz.json"
+              ];
               nixfmt-rfc-style.enable = true;
               trim-trailing-whitespace.enable = true;
               # keep-sorted end
