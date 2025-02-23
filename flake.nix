@@ -23,6 +23,7 @@
       "https://a1994sc.cachix.org"
     ];
     trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI="
     ];
   };
@@ -84,6 +85,13 @@
             pkgs.nix-prefetch
             pkgs.nix-output-monitor
             pkgs.cachix
+          ];
+        };
+        devShells.ci = pkgs.mkShell {
+          packages = with pkgs; [
+            nix-update
+            nix-output-monitor
+            self.packages.${system}.lastversion
           ];
         };
         formatter = fmt.config.build.wrapper;
