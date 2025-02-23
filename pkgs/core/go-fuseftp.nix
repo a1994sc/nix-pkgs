@@ -33,4 +33,15 @@ buildGoModule rec {
   ];
 
   subPackages = [ "pkg/main" ];
+
+  meta = with lib; {
+    # keep-sorted start
+    changelog = "https://github.com/telepresenceio/go-fuseftp/releases/tag/v${version}";
+    description = "User space file system for FTP";
+    homepage = "https://github.com/telepresenceio/go-fuseftp";
+    license = [ licenses.asl20 ];
+    mainProgram = pname;
+    platforms = platforms.linux;
+    # keep-sorted end
+  };
 }
