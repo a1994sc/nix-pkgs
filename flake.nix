@@ -22,6 +22,9 @@
     extra-substituters = [
       "https://a1994sc.cachix.org"
     ];
+    trusted-public-keys = [
+      "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI="
+    ];
   };
   outputs =
     inputs@{ self, nixpkgs, ... }:
