@@ -51,7 +51,7 @@ jobs:
 
       - name: Build updated package
         run: |-
-          nix develop .#ci --command bash -c "nom build .#${{ matrix.comp }}"
+          nix build .#${{ matrix.comp }}
 
   release:
     needs:
@@ -84,4 +84,4 @@ jobs:
 
       - name: Build updated package
         run: |-
-          nix develop .#ci --command bash -c "nom build .#${{ matrix.pkg }}"
+          nix build .#${{ matrix.pkg }}
