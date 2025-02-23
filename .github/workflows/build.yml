@@ -1,5 +1,10 @@
 name: "builds"
 on:
+  workflow_run:
+    workflows:
+      - Update lock
+    types:
+      - completed
   push:
     branches:
       - main
