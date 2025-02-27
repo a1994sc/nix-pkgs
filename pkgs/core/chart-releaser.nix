@@ -13,7 +13,7 @@ let
   # keep-sorted start prefix_order=pname,version,
   pname = "chart-releaser";
   version = "1.7.0";
-  sha256 = "sha256-N6hCLUDAEoqntWwjnSArKNinL7GAENe7UCqH9FKnM68=";
+  sha256 = "sha256-oVhom6xm5Lcwa33w2CH48wva/VxhC57pUL4uQGBHPf0=";
   vendorHash = "sha256-xiJBe2g/sl6U70py4FknLWQn9+TBV7an++pCZy2e7Uo=";
   # keep-sorted end
   rev = "v" + version;
