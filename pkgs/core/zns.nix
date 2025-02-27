@@ -10,9 +10,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "zns";
-  version = "0.2.0";
-  sha256 = "sha256-Xm3fMMfP70U5hc0wcmvqM4ESVhUtuGBu+6cKMScIG8o=";
-  vendorHash = "sha256-dNPcoV336sjpDCsRJwoqvchPYIVkOMyBz/AV7QYPEws=";
+  version = "0.3.0";
+  sha256 = "sha256-gcR/jNVWYVOiynsLdPG+sxnSPCqzYfKwKXBXh1G2/rc=";
+  vendorHash = "sha256-vMcOVoNO8CJ7L3Wsy9HCovSfdezwopHIipPV1gGCZog=";
   # keep-sorted end
   rev = "v" + version;
 in
