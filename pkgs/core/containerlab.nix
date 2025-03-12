@@ -7,9 +7,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "containerlab";
-  version = "0.65.1";
-  sha256 = "sha256-JwfqwKL7widawT01r0yvH36xghKqnpDoqeaApcMvt98=";
-  vendorHash = "sha256-Y7ckQeC94zqNmSu9Y5Cd/kM3aoRdjsmBK2uMZzoJNh4=";
+  version = "0.66.0";
+  sha256 = "sha256-c+0IFz141NrpHNnSqPgomoH9O4Gb+6RB1G8L2eABymM=";
+  vendorHash = "sha256-zRq9o+xOmb3C3BARS2Y2Cu5ioQKey/5MGu9HxYBxcsw=";
   # keep-sorted end
   rev = "v" + version;
 in
