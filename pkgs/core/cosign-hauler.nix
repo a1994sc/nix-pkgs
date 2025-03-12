@@ -14,11 +14,11 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "cosign";
-  version = "2.4.2";
-  sha256 = "sha256-BedG5dp+fcvGBiitskN3QUDQ4IbQPwf1yqm5uAOx4ys=";
+  version = "2.4.2+hauler.1";
+  sha256 = "sha256-gZo7PxX66gO/ACrhQaGD4ws1r0VD589uTTpg6NoWBi8=";
   vendorHash = "sha256-uEeQohqXjHQr1y74pB+oPWq+Ov2Vnpi+fj5GlA9EgTw=";
   # keep-sorted end
-  rev = "refs/tags/v" + version + "+hauler.1";
+  rev = "refs/tags/v" + version;
 in
 buildGoModule {
   inherit version pname vendorHash;
@@ -27,6 +27,16 @@ buildGoModule {
     inherit rev sha256;
     owner = "hauler-dev";
     repo = pname;
+    # populate values that require us to use git. By doing this in postFetch we
+    # can delete .git afterwards and maintain better reproducibility of the src.
+    leaveDotGit = true;
+    postFetch = ''
+      cd "$out"
+      git rev-parse HEAD > $out/COMMIT
+      # '0000-00-00T00:00:00Z'
+      date -u -d "@$(git log -1 --pretty=%ct)" "+'%Y-%m-%dT%H:%M:%SZ'" > $out/SOURCE_DATE_EPOCH
+      find "$out" -name .git -print0 | xargs -0 rm -rf
+    '';
   };
 
   buildInputs = lib.optional (stdenv.hostPlatform.isLinux && pivKeySupport) (lib.getDev pcsclite);
@@ -50,6 +60,12 @@ buildGoModule {
     "-X sigs.k8s.io/release-utils/version.gitTreeState=clean"
   ];
 
+  # ldflags based on metadata from git and source
+  preBuild = ''
+    ldflags+=" -X sigs.k8s.io/release-utils/version.gitCommit=$(cat COMMIT)"
+    ldflags+=" -X sigs.k8s.io/release-utils/version.buildDate=$(cat SOURCE_DATE_EPOCH)"
+  '';
+
   __darwinAllowLocalNetworking = true;
 
   preCheck = ''
@@ -61,6 +77,7 @@ buildGoModule {
     rm cmd/cosign/cli/verify/verify_test.go # Require network access
     rm cmd/cosign/cli/verify/verify_blob_attestation_test.go # Require network access
     rm cmd/cosign/cli/verify/verify_blob_test.go # Require network access
+    rm cmd/cosign/cli/version_test.go # Broken test
   '';
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
