@@ -16,7 +16,6 @@ let
   # keep-sorted end
   rev = "v" + version;
 in
-
 buildGoModule rec {
   inherit version pname vendorHash;
 
@@ -60,9 +59,11 @@ buildGoModule rec {
   };
 
   meta = with lib; {
+    # keep-sorted start
     description = "CLI for the Red Hat OpenShift Cluster Manager";
-    license = [ licenses.asl20 ];
     homepage = "https://github.com/openshift-online/ocm-cli";
+    license = [ licenses.asl20 ];
     platforms = platforms.linux;
+    # keep-sorted end
   };
 }
