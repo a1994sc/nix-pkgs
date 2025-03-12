@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "apko";
-  version = "0.25.1";
-  sha256 = "sha256-ElHRhEsXP3pzTkys9c8FaQODZJmFDMl4ubUIU4B1ACM=";
-  vendorHash = "sha256-ddvdnnDxqwqO6xtLf5NoMT2WYNNMuvyHlo2+/A6rN0E=";
+  version = "0.25.2";
+  sha256 = "sha256-lvxdpc8rXGgebxjFEeQOlpDfLwwe8a0QAfqApCgWAHw=";
+  vendorHash = "sha256-EE59/VyP/dK9qZuTSQqqxAhcJUh/hfSopR7x6k5Eunc=";
   # keep-sorted end
   rev = "v" + version;
 in
