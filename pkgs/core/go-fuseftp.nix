@@ -10,8 +10,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "go-fuseftp";
-  version = "0.6.1";
-  sha256 = "sha256-qOMkFIpeV9r+2RuFyo2J4EPeB+DNMrJLRd7o9SvMFKY=";
+  version = "0.6.4";
+  sha256 = "sha256-gJVJDr+y4xs8YYaqOERyvFiUtw6Etsy4MxOTqPDd3hs=";
   vendorHash = "sha256-D7y1In21shInPNBGUYq/Olx53/rxQN1K+Cfvb+4qVRs=";
   # keep-sorted end
   rev = "v" + version;
