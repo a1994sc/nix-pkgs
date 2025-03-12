@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "werf";
-  version = "2.29.0";
-  sha256 = "sha256-T0+vc3MbvvcbBJF2DBtI6g+yzzCC6RGrG1LqnPLAiEM=";
-  vendorHash = "sha256-aaMDmY8ajLWA/k3P1Pavrn5Vc7j8xrCgsI+QIZNqMEc=";
+  version = "2.31.1";
+  sha256 = "sha256-eEdhAY3vN6hsgggakYpGFiVjR2BBGrg1UF18gFXc8g8=";
+  vendorHash = "sha256-g+QZI0mfXSIU+iBnKzMeTGuF5UB1cwOixvRhcrBGrpE=";
   # keep-sorted end
   rev = "v" + version;
 in
