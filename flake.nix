@@ -97,6 +97,10 @@
           ];
         };
         formatter = fmt.config.build.wrapper;
+        legacyPackages = nixpkgs.lib.filesystem.packagesFromDirectoryRecursive {
+          inherit (pkgs) callPackage;
+          directory = ./pkgs/archive;
+        };
         packages =
           nixpkgs.lib.filesystem.packagesFromDirectoryRecursive {
             inherit (pkgs) callPackage;
