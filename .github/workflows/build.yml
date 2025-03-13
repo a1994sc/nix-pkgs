@@ -27,12 +27,15 @@ jobs:
 
   compilers:
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         comp:
           - "go-1-23"
           - "go-1-24"
+        os:
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
