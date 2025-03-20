@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "helm";
-  version = "3.17.1";
-  sha256 = "sha256-j30ODWM75x2LV8vihLGeOMj9mnOUp7XaFOsp+/csEb4=";
-  vendorHash = "sha256-dZN1rOcGDIvhqXi35904kTBQ8RPeS1PFgspzn/j1ZQU=";
+  version = "3.17.2";
+  sha256 = "sha256-YWtZakPB5jxxj8fO0EM6Fkz0CJS45OYzS5cVPijDwUw=";
+  vendorHash = "sha256-IX4zZnu8+cb2mJxQHOmZLUVxyqfWvbsRQR3q02Wpx6c=";
   # keep-sorted end
   rev = "v" + version;
 in
