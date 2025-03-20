@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "zarf";
-  version = "0.49.1";
-  sha256 = "sha256-pJoPYlKaGhxbvskcuK7rAZKIA0Ips3/yk50LNBJKqX4=";
-  vendorHash = "sha256-Ng03GmpWb2G23yZZUfMS5/qwr2egYdCKvJyzI0zdUYI=";
+  version = "0.50.0";
+  sha256 = "sha256-f8sAjoDLMcDOqzbUkhdkvzIPx3sBqf/16P4WEB4FdP4=";
+  vendorHash = "sha256-s6y28qmdjPa+ITOnkir+Vzwrka+ZUtWnT1G7DojH/GU=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
