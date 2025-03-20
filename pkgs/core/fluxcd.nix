@@ -73,7 +73,7 @@ buildGoModule rec {
     # keep-sorted start
     description = "Open and extensible continuous delivery solution for Kubernetes";
     downloadPage = "https://github.com/fluxcd/flux2/releases/tag/v${version}";
-    homepage = "https://fluxcd.io";
+    homepage = "https://github.com/fluxcd/flux2";
     license = [ licenses.asl20 ];
     mainProgram = "flux";
     # keep-sorted end
