@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "step-cli";
-  version = "0.28.5";
-  sha256 = "sha256-7NVexKbNv3I/dftFhAJxE7eZpUHTjKy6yQIUj9vJG7I=";
-  vendorHash = "sha256-iOtW5uioDDHR7ZJFX3pBdrQlWV6LnfjjHinQppmX5Fo=";
+  version = "0.28.6";
+  sha256 = "sha256-Rxd6werI7n7SSXEBoNIHtTqKX2+uJ6QLssW1pmEeSsg=";
+  vendorHash = "sha256-+pHc2uBgQwMkJ7BTgHGHDPgfBpLlN0Yxf+6Enhb7cys=";
   # keep-sorted end
   rev = "v" + version;
 in
