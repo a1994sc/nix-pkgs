@@ -8,7 +8,7 @@ let
   pname = "sig";
   version = "0.1.4";
   sha256 = "sha256-685VBQ64B+IbSSyqtVXtOgs4wY85WZ/OceHL++v5ip4=";
-  cargoHash = "sha256-afsLf/WsCShjagYWDUA3ZgpgK1XjQiZzISZngzzYybg=";
+  cargoHash = "sha256-x4/vCFbC+kxhne4iRjuJy4L6QRpRKrJU3r+TPpDh4Pw=";
   # keep-sorted end
   rev = "v" + version;
 in
