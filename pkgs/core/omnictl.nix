@@ -57,9 +57,9 @@ buildGoModule rec {
   meta = with lib; {
     # keep-sorted start
     description = "A CLI for out-of-band management of Kubernetes nodes created by Talos";
-    homepage = "https://github.com/siderolabs/talos";
+    homepage = "https://github.com/siderolabs/omni";
     license = [ licenses.mpl20 ];
-    mainProgram = "talosctl";
+    mainProgram = "omnictl";
     platforms = platforms.linux;
     # keep-sorted end
   };

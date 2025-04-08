@@ -13,9 +13,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "telepresence";
-  version = "2.22.2";
-  sha256 = "sha256-Tvlh8F/L1vrPKMNCIBaiDSr8Kgyd/1Y2XJt9PGCeiFY=";
-  vendorHash = "sha256-hxCL1Se6SaOdRx7MZzGIqaje81s/fQensl0X6B7ZdT4=";
+  version = "2.22.3";
+  sha256 = "sha256-xrWlm5crDybvcOX3TevXcEq63Vuw0u9+4NvktIG6LxU=";
+  vendorHash = "sha256-spIdC2ZV+2tm3noyEhygoblN2BjE0w75n4I3jsrg6HI=";
   # keep-sorted end
   rev = "v" + version;
 in
