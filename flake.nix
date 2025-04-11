@@ -148,10 +148,17 @@
                 builtins.map
                   (
                     name:
-                    (builtins.map (ver: {
-                      name = pkgs.lib.removeSuffix ".nix" "${name}-${ver}";
-                      value = pkgs.callPackage ./pkgs/multi/${name}/${ver} { };
-                    }) (builtins.attrNames (builtins.readDir ./pkgs/multi/${name})))
+                    (builtins.map
+                      (ver: {
+                        name = pkgs.lib.removeSuffix ".nix" "${name}-${ver}";
+                        value = pkgs.callPackage ./pkgs/multi/${name}/${ver} { };
+                      })
+                      (
+                        builtins.filter (name: name != "default.nix") (
+                          builtins.attrNames (builtins.readDir ./pkgs/multi/${name})
+                        )
+                      )
+                    )
                   )
                   (
                     builtins.attrNames (
