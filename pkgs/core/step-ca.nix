@@ -16,9 +16,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "step-ca";
-  version = "0.28.1";
-  sha256 = "sha256-SFiGRmi8Bd0WEitvDvybfGMEw36gAVjtLrYbBpBAItU=";
-  vendorHash = "sha256-t42TAjRuMo1AXq3IKbN2L7G50vJzi/2LmhPKrn5K1Io=";
+  version = "0.28.3";
+  sha256 = "sha256-5W39Nc6WuxhrXbEfPWMaWWAUX6UnjYqlEAPlDCeYgrY=";
+  vendorHash = "sha256-AuMYdZa1QpmMQZxlv+lmoWtszQkVdwXOTXxY8CWaUbI=";
   # keep-sorted end
   rev = "v" + version;
 in
@@ -67,7 +67,7 @@ buildGoModule rec {
     # keep-sorted start
     changelog = "https://github.com/smallstep/certificates/releases/tag/v${version}";
     description = "Private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management, so you can use TLS everywhere & SSO for SSH";
-    homepage = "https://smallstep.com/certificates/";
+    homepage = "https://github.com/smallstep/certificates";
     license = [ lib.licenses.asl20 ];
     mainProgram = "step";
     platforms = platforms.linux;

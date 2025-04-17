@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "omnictl";
-  version = "0.47.1";
-  sha256 = "sha256-wNx+I10U07qZXI0Gxe9x+E+WZ5omVioR6/qXGc/HCZo=";
-  vendorHash = "sha256-BQn+3TEaHnJrzDZt3j/sB9Gbh4mQXhqfX0ssu+G+mg0=";
+  version = "0.48.3";
+  sha256 = "sha256-pgoSjSzkwrXI6+DnuvSCmChwPUbsYwuwtr/JqKaK+tc=";
+  vendorHash = "sha256-LMDIpgtMbwr/cpVoAAnr56c/G81ocuOQCJDI+S0z1XU=";
   # keep-sorted end
   rev = "v" + version;
 in
