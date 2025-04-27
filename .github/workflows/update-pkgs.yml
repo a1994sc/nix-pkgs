@@ -24,6 +24,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         version:
           - "23"
@@ -56,9 +57,8 @@ jobs:
 
       - name: Get latest version of 1.${{ matrix.version }}
         run: |-
-          nix develop .#ci
-          export VER=$(lastversion --only '~1.${{ matrix.version }}' https://github.com/golang/go)
-          nix-update --flake go-1-${{ matrix.version }} --build --version $VER
+          export VER=$(nix develop .#ci --command bash -c "lastversion --only '~1.${{ matrix.version }}' https://github.com/golang/go")
+          nix develop .#ci --command bash -c "nix-update --flake go-1-${{ matrix.version }} --build --version $VER"
 
       - name: Commit & Push changes
         uses: actions-js/push@5a7cbd780d82c0c937b5977586e641b2fd94acc5 # v1.5
