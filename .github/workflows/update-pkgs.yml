@@ -57,9 +57,8 @@ jobs:
           echo "latest_version=$(python -m lastversion --only '~1.${{ matrix.version }}' https://github.com/golang/go)" >> "$GITHUB_OUTPUT"
 
       - name: Get latest version of 1.${{ matrix.version }}
-        shell: nix develop .#ci --command bash -c "{0}"
         run: |-
-          nix-update --flake go-1-${{ matrix.version }} --build --version ${{ steps.latest-version.outputs.latest_version }}
+          nix develop .#ci --command bash -c "nix-update --flake go-1-${{ matrix.version }} --build --version ${{ steps.latest-version.outputs.latest_version }}"
 
       - name: Commit & Push changes
         uses: actions-js/push@5a7cbd780d82c0c937b5977586e641b2fd94acc5 # v1.5
