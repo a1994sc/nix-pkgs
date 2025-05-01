@@ -69,7 +69,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: create pull request
-        if: steps.commit.outputs.committed
+        if: ${{ steps.commit.outputs.committed }}
         run: gh pr create -B 'main' -H 'update/go-lang-1-${{ matrix.version }}.x' --title 'Update golang 1-${{ matrix.version }}' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
