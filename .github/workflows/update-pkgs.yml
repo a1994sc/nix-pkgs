@@ -73,9 +73,15 @@ jobs:
           message: "chore(pkg): update package go-1-${{ matrix.version }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: create pull request
+      - name: Create pull request
         if: ${{ steps.commit.outputs.committed == 'true' }}
-        run: gh pr create -B 'main' -H 'update/go-lang-1-${{ matrix.version }}.x' --title 'Update golang 1-${{ matrix.version }}' --body 'Created by Github action'
+        run: gh pr create -B 'main' -H 'update/go-lang-1-${{ matrix.version }}' --title 'Update golang 1-${{ matrix.version }}' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge pull request
+        if: ${{ steps.commit.outputs.committed == 'true' }}
+        run: gh pr merge --auto --delete-branch --merge 'update/go-lang-1-${{ matrix.version }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -135,8 +141,14 @@ jobs:
           message: "chore(pkg): update package ${{ matrix.pkg }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: create pull request
+      - name: Create pull request
         if: ${{ steps.commit.outputs.committed == 'true' }}
         run: gh pr create -B 'main' -H 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}' --title 'Update ${{ matrix.pkg }}' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge pull request
+        if: ${{ steps.commit.outputs.committed == 'true' }}
+        run: gh pr merge --auto --delete-branch --merge 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
