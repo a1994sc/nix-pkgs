@@ -4,24 +4,25 @@ on:
   schedule:
     - cron: '15 */6 * * *'
 jobs:
-  # setup:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     matrix: ${{ steps.set-matrix.outputs.matrix }}
-  #   steps:
-  #     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-  #     - uses: cachix/install-nix-action@526118121621777ccd86f79b04685a9319637641 # v31.3.0
-  #       with:
-  #         nix_path: nixpkgs=channel:nixos-unstable
-  #         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-  #     - id: set-matrix
-  #       env:
-  #         PKG_DIR: pkgs/core
-  #       run: |-
-  #         echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I=0 '. = ([.packages.x86_64-linux | keys | .[] | select(test("[^0-9]+$"))]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: cachix/install-nix-action@526118121621777ccd86f79b04685a9319637641 # v31.3.0
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - id: set-matrix
+        env:
+          PKG_DIR: pkgs/core
+        run: |-
+          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I=0 '. = ([.packages.x86_64-linux | keys | .[] | select(test("[^0-9]+$"))]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
 
   go-lang:
-    # needs: setup
+    needs:
+      - setup
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -80,15 +81,12 @@ jobs:
 
   packages:
     needs:
+      - setup
       - go-lang
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      # matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
-      matrix:
-        pkgs:
-          - zarf
-          - talosctl
+      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
     permissions:
       contents: write
       pull-requests: write
