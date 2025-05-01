@@ -12,7 +12,6 @@
 }:
 let
   # keep-sorted start prefix_order=version,
-  pname = "fluxcd";
   version = "0.41.2";
   sha256 = "sha256-RFwuNgMjO4WIXtZ8A0JzOa8p01XPxKvY1HImaqaxkTA=";
   vendorHash = "sha256-ez4yaFZ5JROdu9boN5wI/XGMqLo8OKW6b0FZsJeFw4w=";
