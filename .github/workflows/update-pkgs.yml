@@ -112,10 +112,10 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$)
 
-      - name: Get the url for package ${{ matrix.pkgs }}
+      - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
         run: |-
-          echo "URL=$(nix eval --raw .#packages.x86_64-linux.${{ matrix.pkgs }}.meta.homepage)" >> "$GITHUB_OUTPUT"
+          echo "URL=$(nix eval --raw .#packages.x86_64-linux.${{ matrix.pkg }}.meta.homepage)" >> "$GITHUB_OUTPUT"
 
       - name: Get latest version
         id: latest-version
@@ -125,18 +125,18 @@ jobs:
 
       - name: Build package with latest version
         run: |-
-          nix develop .#ci --command bash -c "nix-update --flake ${{ matrix.pkgs }} --build --version ${{ steps.latest-version.outputs.version }}"
+          nix develop .#ci --command bash -c "nix-update --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
 
       - name: Commit & Push changes
         id: commit
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         with:
-          new_branch: 'update/${{ matrix.pkgs }}-${{ steps.latest-version.outputs.version }}'
-          message: "chore(pkg): update package ${{ matrix.pkgs }}"
+          new_branch: 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}'
+          message: "chore(pkg): update package ${{ matrix.pkg }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: create pull request
         if: ${{ steps.commit.outputs.committed == 'true' }}
-        run: gh pr create -B 'main' -H 'update/${{ matrix.pkgs }}-${{ steps.latest-version.outputs.version }}' --title 'Update ${{ matrix.pkgs }}' --body 'Created by Github action'
+        run: gh pr create -B 'main' -H 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}' --title 'Update ${{ matrix.pkg }}' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
