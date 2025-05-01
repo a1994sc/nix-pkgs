@@ -15,6 +15,7 @@ let
       "age1758tal2rl0ew693xt6l2ffwnrua33sxr6tc4ta3utu639ldfq53szvgm0g"
       "age1q5urgt9hszq2j9p2qtprl853w6gcy9wapzt73r73xmjla4zhq98scpl8rm"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQvZDcMvDnAAUqvyFGajabemVsOMC17jINp0fkMII0m"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO9OkpTcjwWLH2fo8SUTVjb2NYEc6w996Cwr0wL2cRDx"
     ];
   };
   secrets = {
