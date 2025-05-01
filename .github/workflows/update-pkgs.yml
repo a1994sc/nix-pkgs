@@ -29,6 +29,8 @@ jobs:
         version:
           - "23"
           - "24"
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -85,6 +87,8 @@ jobs:
         pkgs:
           - zarf
           - talosctl
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
