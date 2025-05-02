@@ -2,7 +2,8 @@ name: "builds"
 on:
   workflow_run:
     workflows:
-      - Update lock
+      - "Update lock"
+      - "auto-magic update packages"
     types:
       - completed
   push:
