@@ -13,9 +13,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "yq-go";
-  version = "4.45.1";
-  sha256 = "sha256-AsTDbeRMb6QJE89Z0NGooyTY3xZpWFoWkT7dofsu0DI=";
-  vendorHash = "sha256-d4dwhZYzEuyh1zJQ2xU0WkygHjoVLoCBrDKuAHUzu1w=";
+  version = "4.45.2";
+  sha256 = "sha256-T7yqdU55/a47PUogQEFc7GSKTU7F8tZui7iXMFix63I=";
+  vendorHash = "sha256-u3Dptr/pTknXI6axTeR8xhuE9kvKeeXQfSJKSkxDb8k=";
   # keep-sorted end
   rev = "v" + version;
 in
