@@ -40,7 +40,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: chainguard-dev/actions/setup-gitsign@d9b7e22c19086f609cfeaea6d3b3e34f7ecc7266 # v1.0.6
+      - uses: chainguard-dev/actions/setup-gitsign@dd4524afd480a43ead9543a08be1c5004ee8b0a7 # v1.0.7
 
       - name: Configure nix
         uses: cachix/install-nix-action@526118121621777ccd86f79b04685a9319637641 # v31.3.0
@@ -105,7 +105,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: chainguard-dev/actions/setup-gitsign@d9b7e22c19086f609cfeaea6d3b3e34f7ecc7266 # v1.0.6
+      - uses: chainguard-dev/actions/setup-gitsign@dd4524afd480a43ead9543a08be1c5004ee8b0a7 # v1.0.7
 
       - name: Configure nix
         uses: cachix/install-nix-action@526118121621777ccd86f79b04685a9319637641 # v31.3.0
