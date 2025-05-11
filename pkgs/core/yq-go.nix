@@ -13,8 +13,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "yq-go";
-  version = "4.45.3";
-  sha256 = "sha256-xa0kIdb/Y+1zqGulmQ3qR62E9q4s5CCooYvsUDsZN9E=";
+  version = "4.45.4";
+  sha256 = "sha256-qcsm7dB7F7Snul2PbH/7RdK17c5qT+mk+FvfqnFfuak=";
   vendorHash = "sha256-cA5Y0/2lvYfVXr4zgtp/U8aBUkHnh9xb9jDHVk/2OME=";
   # keep-sorted end
   rev = "v" + version;
