@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "zarf";
-  version = "0.54.0";
-  sha256 = "sha256-MfhnxEzJNz9UXe3SNuMpSW/4XAutwhALaxO7IDD8KW0=";
-  vendorHash = "sha256-KaimdNCffSSjPN5syUKDu0xXEwt31az/kFTJeoGSbYs=";
+  version = "0.55.1";
+  sha256 = "sha256-vGBPG1dBm2QNLqV95zuDW7mSZTgmlZ+C0XxZoN0v1aI=";
+  vendorHash = "sha256-1Dr2tki6A4DRtTcmngz8wm4yjW64u916lM40+n+2gr4=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
@@ -39,6 +39,8 @@ buildGoModule rec {
       find $out -name .git -print0 | xargs -0 rm -rf
     '';
   };
+
+  proxyVendor = true;
 
   preBuild = ''
     mkdir -p build/ui
