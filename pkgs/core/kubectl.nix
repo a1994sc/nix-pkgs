@@ -14,8 +14,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "kubectl";
-  version = "1.33.0";
-  sha256 = "sha256-5MlMBsYf8V7BvV6xaeRMVSRaE+TpG8xJkMwVGm/fVdo=";
+  version = "1.33.1";
+  sha256 = "sha256-fPKLe1P2jsu6pOTqofFrk1048kPOx/mmXYm7/tBzM84=";
   vendorHash = null;
   # keep-sorted end
   rev = "v" + version;
