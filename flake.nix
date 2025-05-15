@@ -99,21 +99,7 @@
             };
           };
           devShells.default = pkgs.mkShell {
-            shellHook =
-              let
-                secret = inputs.agenix-shell.packages.${system}.installationScript.override {
-                  agenixShellConfig.secrets = {
-                    "env" = {
-                      file = ./encrypt/env.age;
-                      name = "GITHUB_API_TOKEN";
-                    };
-                  };
-                };
-              in
-              ''
-                source ${lib.getExe secret}
-              ''
-              + self.checks.${system}.pre-commit-check.shellHook;
+            shellHook = self.checks.${system}.pre-commit-check.shellHook;
             buildInputs = self.checks.${system}.pre-commit-check.enabledPackages ++ [
               pkgs.nix-update
               pkgs.nix-prefetch

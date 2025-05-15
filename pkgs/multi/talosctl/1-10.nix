@@ -1,11 +1,11 @@
 {
   # keep-sorted start
   buildGoModule,
+  callPackage,
   fetchFromGitHub,
   installShellFiles,
   lib,
   stdenv,
-  callPackage,
   # keep-sorted end
   ...
 }:

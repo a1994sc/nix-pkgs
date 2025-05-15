@@ -13,9 +13,9 @@
 let
   # keep-sorted start prefix_order=version,
   version = "2.1.2";
+  manifestsSha256 = "sha256-ynRGJ4tZLQ+fCOIgz0olMs8FBcV4y7oL0KmWW1DdvMY=";
   sha256 = "sha256-878zVONGJB214ot3JmhVUbPr0XqOu8vKJtZN6J3kh8w=";
   vendorHash = "sha256-4srEYBI/Qay9F0JxEIT0HyOtF29V9dzdB1ei4tZYJbs=";
-  manifestsSha256 = "sha256-ynRGJ4tZLQ+fCOIgz0olMs8FBcV4y7oL0KmWW1DdvMY=";
   # keep-sorted end
 in
 callPackage ./. {
