@@ -132,6 +132,7 @@ jobs:
           echo "version=$(python -m lastversion ${{ steps.homepage.outputs.URL }})" >> "$GITHUB_OUTPUT"
 
       - name: Build package with latest version
+        if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
           nix develop .#ci --command bash -c "nix-update --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
 
