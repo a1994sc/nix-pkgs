@@ -51,7 +51,7 @@ jobs:
         with:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$)
+          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
 
       - name: Get latest version
         id: latest-version
@@ -118,7 +118,7 @@ jobs:
         with:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$)
+          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
 
       - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
