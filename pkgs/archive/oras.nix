@@ -13,9 +13,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "oras";
-  version = "1.2.2";
-  hash = "sha256-iSmoD2HhzVrWQBaZ7HaIjcPmybl4JTVeVVfbn29i91Q=";
-  vendorHash = "sha256-zxcRMrr0mfSiuZpXYe7N0nJrEmiBTgw03+Yp4PYieBY=";
+  version = "1.2.3";
+  hash = "sha256-IXIw2prApg5iL3BPbOY4x09KjyhFvKofgfz2L6UXKR8=";
+  vendorHash = "sha256-PLGWPoMCsmdnsKD/FdaRHGO0X9/0Y/8DWV21GsCBR04=";
   # keep-sorted end
   rev = "v" + version;
 in
