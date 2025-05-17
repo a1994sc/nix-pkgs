@@ -136,6 +136,10 @@ jobs:
         run: |-
           nix develop .#ci --command bash -c "nix-update --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
 
+      - name: Fetch changes
+        run: |-
+          git pull
+
       - name: Commit & Push changes
         id: commit
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
