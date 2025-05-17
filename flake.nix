@@ -105,7 +105,7 @@
               pkgs.nix-prefetch
               pkgs.nix-output-monitor
               pkgs.cachix
-              self.packages.${system}.lastversion
+              self.legacyPackages.${system}.lastversion
             ];
           };
           devShells.ci = pkgs.mkShell {
