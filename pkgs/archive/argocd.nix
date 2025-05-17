@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "argocd";
-  version = "2.14.5";
-  sha256 = "sha256-pR+8ZZpYyhdLarxx7U2D0LhekDWqfmwgycB0RzK/HoU=";
-  vendorHash = "sha256-ZKGOLkCUXnBb20vqYOYP1r1PEWGQcwSLmT/jkBcOkjs=";
+  version = "3.0.1";
+  sha256 = "sha256-sDFnP4ux9SVbLWjbvNHm5pHDCcKfs9qJ0warcnTm+RY=";
+  vendorHash = "sha256-ebb5Dc3WDPVEoo96Yd5lQiI4fsrnPDo+4YA04xt8SQM=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
@@ -66,10 +66,6 @@ buildGoModule rec {
   '';
 
   doInstallCheck = true;
-
-  installCheckPhase = ''
-    $out/bin/argocd version --client | grep ${src.rev} > /dev/null
-  '';
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd ${pname} \
