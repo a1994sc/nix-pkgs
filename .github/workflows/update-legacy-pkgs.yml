@@ -38,10 +38,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch changes
-        run: |-
-          git pull
-
       - uses: chainguard-dev/actions/setup-gitsign@ec48ea414c0cb207549029d8fe35f8f01e563219 # v1.0.8
 
       - name: Configure nix
@@ -72,6 +68,10 @@ jobs:
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
           nix develop .#ci --command bash -c "nix-update --flake legacyPackages.x86_64-linux.${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
+
+      - name: Fetch changes
+        run: |-
+          git pull
 
       - name: Commit & Push changes
         id: commit
