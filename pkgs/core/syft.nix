@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "syft";
-  version = "1.25.0";
-  hash = "sha256-48DBJnPI1TpPCPeq5xRN6W+lBBotM36iLp8QTX96wYg=";
-  vendorHash = "sha256-mjh9t/sil0pyy9wcrXgf5oE6VO/oO26NjcnsASIh4pM=";
+  version = "1.25.1";
+  hash = "sha256-ITtNtPUJg2yaEqjS55Qm2J0Cc9vGa71IX8xkQx5xOOw=";
+  vendorHash = "sha256-KTNKoin2Z39tVgM9gLz2jlxbnYSrH8/CCsdPJr54OpY=";
   # keep-sorted end
   rev = "refs/tags/v" + version;
 in
