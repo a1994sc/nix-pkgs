@@ -57,7 +57,7 @@ jobs:
       - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
         run: |-
-          echo "URL=$(nix eval --raw .#packages.x86_64-linux.${{ matrix.pkg }}.meta.homepage)" >> "$GITHUB_OUTPUT"
+          echo "URL=$(nix eval --raw .#legacyPackages.x86_64-linux.${{ matrix.pkg }}.meta.homepage)" >> "$GITHUB_OUTPUT"
 
       - name: Get latest version
         id: latest-version
@@ -68,7 +68,7 @@ jobs:
       - name: Build package with latest version
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
-          nix develop .#ci --command bash -c "nix-update --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
+          nix develop .#ci --command bash -c "nix-update --flake legacyPackages.x86_64-linux.${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
 
       - name: Commit & Push changes
         id: commit
