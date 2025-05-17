@@ -10,22 +10,7 @@ on:
     branches:
       - main
 jobs:
-  detect-noop:
-    runs-on: ubuntu-latest
-    outputs:
-      noop: ${{ steps.noop.outputs.should_skip }}
-    steps:
-      - name: Detect No-op Changes
-        id: noop
-        uses: fkirc/skip-duplicate-actions@f75f66ce1886f00957d99748a42c724f4330bdcf # v5.3.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          do_not_skip: '["workflow_dispatch", "schedule"]'
-
   setup:
-    needs:
-      - detect-noop
-    if: needs.detect-noop.outputs.noop != 'true'
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -42,8 +27,6 @@ jobs:
           echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -p=j -o=j -I=0 '. = (.packages.x86_64-linux | keys) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
 
   compilers:
-    needs:
-      - setup
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
