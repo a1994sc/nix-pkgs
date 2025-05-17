@@ -112,7 +112,7 @@
             packages = with pkgs; [
               nix-update
               nix-output-monitor
-              self.packages.${system}.lastversion
+              self.legacyPackages.${system}.lastversion
             ];
           };
           formatter = fmt.config.build.wrapper;
