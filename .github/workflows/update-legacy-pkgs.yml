@@ -51,8 +51,7 @@ jobs:
         with:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$)
-          skipPush: true
+          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
 
       - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
