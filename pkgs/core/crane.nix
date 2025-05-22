@@ -10,7 +10,7 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "go-containerregistry";
-  version = "0.20.4";
+  version = "0.20.5";
   sha256 = "sha256-t1OQpXn87OInOmqRx/oFrWkbVmE3nJX/OXH/13cq4CU=";
   vendorHash = null;
   # keep-sorted end
