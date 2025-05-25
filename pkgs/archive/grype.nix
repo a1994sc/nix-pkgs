@@ -13,9 +13,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "grype";
-  version = "0.92.1";
-  hash = "sha256-H1tmo9ujX1LPAA++6YD1iCJR3+qdbdHyj+dVIIiCCqM=";
-  vendorHash = "sha256-bcSP/cfWV2QEa21PuC73QZzAGDVCXdYluz6LObR+2Lo=";
+  version = "0.92.2";
+  hash = "sha256-OySQO/ZJvaD4mrIRqymBJDXdPC8ZWCz+ELrMXvmQPvk=";
+  vendorHash = "sha256-Dp+BVwlBqMbAZivOHQWALMrLVtAncGT/rvbbIk1BFFQ=";
   # keep-sorted end
   rev = "refs/tags/v" + version;
 in
