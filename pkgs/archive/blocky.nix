@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "blocky";
-  version = "0.25";
-  hash = "sha256-yd9qncTuzf7p1hIYHzzXyxAx1C1QiuQAIYSKcjCiF0E=";
-  vendorHash = "sha256-Ck80ym64RIubtMHKkXsbN1kFrB6F9G++0U98jPvyoHw=";
+  version = "0.26.2";
+  hash = "sha256-yo21f12BLINXb8HWdR3ZweV5+cTZN07kxCxO1FMJq/4=";
+  vendorHash = "sha256-cIDKUzOAs6XsyuUbnR2MRIeH3LI4QuohUZovh/DVJzA=";
   # keep-sorted end
   rev = "refs/tags/v" + version;
 in
