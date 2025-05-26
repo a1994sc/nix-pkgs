@@ -1,8 +1,8 @@
 {
   # keep-sorted start
-  buildGo123Module,
+  buildGoModule,
   fetchFromGitHub,
-  go-mockery,
+  mockgen,
   installShellFiles,
   lib,
   stdenv,
@@ -12,13 +12,13 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "terragrunt";
-  version = "0.78.4";
-  sha256 = "sha256-Xlqq1d6itQx0Y6MQJTY3tsZ8Q2S8EqRbqD1GGdIu9oA=";
-  vendorHash = "sha256-sVA2bzQoeDdYRDaAC6DZtF4izuXhlHTUMKNkOIveG7c=";
+  version = "0.80.2";
+  sha256 = "sha256-FgytHWKtXK0tNDFOVOEciEzyVEXLbk9T2Nk8Se35HnY=";
+  vendorHash = "sha256-Zgoon6eMUXn2zaxHfJovtWV9Q11rDdkBrYzNqa73DsM=";
   # keep-sorted end
   rev = "v" + version;
 in
-buildGo123Module rec {
+buildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {
@@ -50,7 +50,7 @@ buildGo123Module rec {
 
   nativeBuildInputs = [
     installShellFiles
-    go-mockery
+    mockgen
   ];
 
   env.CGO_ENABLED = 0;
