@@ -56,8 +56,6 @@
               (
                 final: prev:
                 {
-                  buildGoModule = prev.buildGo124Module;
-                  go_1_24 = self.packages.${system}.go-1-24;
                   go-fuseftp = self.legacyPackages.${system}.go-fuseftp;
                   cosign-hauler = self.legacyPackages.${system}.cosign-hauler;
                 }

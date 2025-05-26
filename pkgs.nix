@@ -27,4 +27,5 @@
   # keep-sorted end
   final.go_1_23 = self.packages.${system}.go-1-23;
   final.go_1_24 = self.packages.${system}.go-1-24;
+  final.buildGoModule = self.buildGo124Module;
 }
