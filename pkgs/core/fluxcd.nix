@@ -12,10 +12,10 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "fluxcd";
-  version = "2.5.1";
+  version = "2.6.0";
   manifestsSha256 = "sha256-bIIK8igtx0gUcn3hlBohE0MG9PMhyThz4a71pkonBpE=";
-  sha256 = "sha256-BuFylOWR30aK7d1eN+9getR5amtAtkkhHNAPfdfASHs=";
-  vendorHash = "sha256-2fThvz/5A1/EyS6VTUQQa5Unx1BzYfsVRE18xOHtLHE=";
+  sha256 = "sha256-51Oj79BJXwdqA9JTbpTJNlCok8CEfXusCKCXT7z8xjg=";
+  vendorHash = "sha256-H2whjqipt9gl3lZtSwXDpzjY4NQZnbWWjdSryo7wwFE=";
   # keep-sorted end
   rev = "v" + version;
   manifests = fetchzip {
