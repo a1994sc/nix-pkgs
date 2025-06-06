@@ -82,7 +82,7 @@ jobs:
 
       - name: Merge pull request
         if: ${{ steps.commit.outputs.committed == 'true' }}
-        run: gh pr merge --auto --delete-branch --merge 'update/go-lang-1-${{ matrix.version }}'
+        run: gh pr merge --auto --delete-branch --merge 'update/go-lang-1-${{ matrix.version }}.x'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
