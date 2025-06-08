@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
-      max-parallel: 4
+      max-parallel: 1
     permissions:
       contents: write
       pull-requests: write
