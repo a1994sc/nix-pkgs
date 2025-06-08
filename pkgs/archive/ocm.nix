@@ -10,9 +10,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "ocm";
-  version = "1.0.5";
-  sha256 = "sha256-0JCmKuSVuSOinJiLDT4dOKNON6PnICum6Smnf3syJfM=";
-  vendorHash = "sha256-kTgTRRSJe3zvgoy923FRtomJpXqnK1t7MF53QAidyuo=";
+  version = "1.0.6";
+  sha256 = "sha256-NNhHd4++o2nJjG4okx5dWUng9Z2b032goaLq+1eZ+KI=";
+  vendorHash = "sha256-KlpQO2xi6edysM45ks2m7/3kkEfxACvK/hzrLpHnEic=";
   # keep-sorted end
   rev = "v" + version;
 in
