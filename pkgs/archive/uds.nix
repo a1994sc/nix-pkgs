@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "uds";
-  version = "0.27.5";
-  sha256 = "sha256-PJij+oWmtX8kll1xqcMr8tfTyu5OVivkS6R27Nl3kYM=";
-  vendorHash = "sha256-XHH9nFAuB4g2Q+08T/77n5UQIiBQSNG6oeslgixqYdk=";
+  version = "0.27.6";
+  sha256 = "sha256-DVkm1INAiTKscjlJ9k2ysdIMbSY4qqxVDz4zZEk3BZ4=";
+  vendorHash = "sha256-EWDX01j7NFsX/oNlxy/JB2sm5C/NHzvRqYABXlkl3BQ=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
