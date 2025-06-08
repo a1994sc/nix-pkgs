@@ -12,9 +12,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "chart-releaser";
-  version = "1.7.0";
-  sha256 = "sha256-4I15xjbAgw7RJTPsi9Yk30kBYNRKAtaLUbUjxQmxjQE=";
-  vendorHash = "sha256-xiJBe2g/sl6U70py4FknLWQn9+TBV7an++pCZy2e7Uo=";
+  version = "1.8.1";
+  sha256 = "sha256-uVe40uetUiKkqMv2ZwHwAzxJVbJuQP8kFooFEBgDvVQ=";
+  vendorHash = "sha256-nUqUtm7SUKNEITzFJ4gozlegqGtyiRNGKDyOqteGYTw=";
   # keep-sorted end
   rev = "v" + version;
 in
