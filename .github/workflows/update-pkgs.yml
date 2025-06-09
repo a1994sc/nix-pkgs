@@ -159,7 +159,7 @@ jobs:
         if: ${{ steps.commit.outputs.committed == 'true' }}
         id: merge
         continue-on-error: true
-        run: gh pr merge --auto --delete-branch --merge 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}'
+        run: gh pr merge --auto --delete-branch --rebase 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -171,6 +171,6 @@ jobs:
       - name: Merge pull request, rebase
         if: ${{ steps.commit.outputs.committed == 'true' && steps.merge.outcome == 'failure' }}
         continue-on-error: true
-        run: gh pr merge --auto --delete-branch --merge 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}'
+        run: gh pr merge --auto --delete-branch --rebase 'update/${{ matrix.pkg }}-${{ steps.latest-version.outputs.version }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
