@@ -53,14 +53,14 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
-              (
-                final: prev:
-                {
-                  go-fuseftp = self.legacyPackages.${system}.go-fuseftp;
-                  cosign-hauler = self.legacyPackages.${system}.cosign-hauler;
-                }
-                // (import ./pkgs.nix { inherit final self system; })
-              )
+              (final: prev: {
+                go-fuseftp = self.legacyPackages.${system}.go-fuseftp;
+                cosign-hauler = self.legacyPackages.${system}.cosign-hauler;
+                go_1_23 = self.packages.${system}.go-1-23;
+                go_1_24 = self.packages.${system}.go-1-24;
+                go = self.packages.${system}.go-1-24;
+                final.buildGoModule = prev.buildGo124Module;
+              })
             ];
           };
           fmt = inputs.treefmt-nix.lib.evalModule pkgs (
@@ -78,22 +78,20 @@
           );
         in
         {
-          checks = {
-            pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-              src = ./.;
-              hooks = {
-                # keep-sorted start case=no
-                check-executables-have-shebangs.enable = true;
-                check-shebang-scripts-are-executable.enable = true;
-                detect-private-keys.enable = true;
-                end-of-file-fixer.enable = true;
-                nixfmt-rfc-style.enable = true;
-                trim-trailing-whitespace.enable = true;
-                # keep-sorted end
-                end-of-file-fixer.excludes = [
-                  ".cz.json"
-                ];
-              };
+          checks.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              # keep-sorted start case=no
+              check-executables-have-shebangs.enable = true;
+              check-shebang-scripts-are-executable.enable = true;
+              detect-private-keys.enable = true;
+              end-of-file-fixer.enable = true;
+              nixfmt-rfc-style.enable = true;
+              trim-trailing-whitespace.enable = true;
+              # keep-sorted end
+              end-of-file-fixer.excludes = [
+                ".cz.json"
+              ];
             };
           };
           devShells.default = pkgs.mkShell {
