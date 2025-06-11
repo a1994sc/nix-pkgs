@@ -2,9 +2,9 @@
   # keep-sorted start
   buildGoModule,
   fetchFromGitHub,
-  mockgen,
   installShellFiles,
   lib,
+  mockgen,
   stdenv,
   # keep-sorted end
   ...
