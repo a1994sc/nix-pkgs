@@ -18,7 +18,7 @@ jobs:
         env:
           PKG_DIR: pkgs/core
         run: |-
-          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I=0 '. = ([.packages.x86_64-linux | keys | .[] | select(test("[^0-9]+$"))]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
+          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I=0 '. = ([.packages.x86_64-linux | keys | .[] | select(test("[^0-9]+$")) | select (. != "coredns*")]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
 
   go-lang:
     runs-on: ubuntu-latest
