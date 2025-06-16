@@ -98,7 +98,7 @@ buildGoModule rec {
   '';
 
   meta = with lib; {
-    homepage = "https://coredns.io";
+    homepage = "https://github.com"/coredns/coredns;
     description = "DNS server that runs middleware";
     mainProgram = "coredns";
     license = [ licenses.asl20 ];
