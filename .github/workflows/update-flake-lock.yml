@@ -19,7 +19,7 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - uses: chainguard-dev/actions/setup-gitsign@939ece6bc39459fd24dde56e63ca93adf840031e # v1.2.1
+      - uses: chainguard-dev/actions/setup-gitsign@42c3aae0357e6493d93319b80c78fabada336849 # v1.4.1
 
       - uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v17
 
