@@ -44,7 +44,7 @@ jobs:
       - name: Configure nix
         uses: cachix/install-nix-action@17fe5fb4a23ad6cbbe47d6b3f359611ad276644c # v31.4.0
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
+          nix_path: nixpkgs=github:NixOS/nixpkgs/nixos-unstable-small
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add cachix actions
@@ -64,7 +64,7 @@ jobs:
 
       - name: Get latest version of 1.${{ matrix.version }}
         run: |-
-          nix develop .#ci --command bash -c "nix-update --flake go-1-${{ matrix.version }} --build --version ${{ steps.latest-version.outputs.version }}"
+          nix run nixpkgs#nix-update -- --flake go-1-${{ matrix.version }} --build --version ${{ steps.latest-version.outputs.version }}
 
       - name: Commit & Push changes
         id: commit
@@ -111,7 +111,7 @@ jobs:
       - name: Configure nix
         uses: cachix/install-nix-action@17fe5fb4a23ad6cbbe47d6b3f359611ad276644c # v31.4.0
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
+          nix_path: nixpkgs=github:NixOS/nixpkgs/nixos-unstable-small
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add cachix actions
@@ -135,7 +135,7 @@ jobs:
       - name: Build package with latest version
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
-          nix develop .#ci --command bash -c "nix-update --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
+          nix run nixpkgs#nix-update -- --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}
 
       - name: Fetch changes
         run: |-
