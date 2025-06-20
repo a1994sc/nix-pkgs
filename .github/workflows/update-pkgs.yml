@@ -1,8 +1,8 @@
 name: "auto-magic update packages"
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '15 */6 * * *'
+  # schedule:
+  #   - cron: '15 */6 * * *'
 jobs:
   setup:
     runs-on: ubuntu-latest
