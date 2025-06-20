@@ -1,8 +1,8 @@
 name: Update lock
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * FRI'  # every Friday at midnight
+  # schedule:
+  #   - cron: '0 0 * * FRI'  # every Friday at midnight
 
 permissions:
   contents: write
