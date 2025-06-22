@@ -32,6 +32,7 @@ jobs:
       contents: write
       pull-requests: write
       id-token: write
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -67,7 +68,7 @@ jobs:
       - name: Build package with latest version
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
-          nix develop .#ci --command bash -c "nix-update --flake legacyPackages.x86_64-linux.${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}"
+          nix run nixpkgs#nix-update -- --flake legacyPackages.x86_64-linux.${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}
 
       - name: Fetch changes
         run: |-
