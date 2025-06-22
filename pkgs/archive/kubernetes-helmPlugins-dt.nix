@@ -8,9 +8,9 @@
 }:
 let
   pname = "helm-dt";
-  version = "0.4.5";
-  sha256 = "sha256-/TRhi4YgEB5RwRZXuwGCCqHz3SoBfs1SdKLBWg1yed0=";
-  vendorHash = "sha256-54QB8dZSqSpDb4z7di5K6d8/fFbXftKfQJAljV50/Jk=";
+  version = "0.4.6";
+  sha256 = "sha256-SB1XjWB2vYUUT9EvUCZM0dt4Q9J38lh6x6RQWjZCQXU=";
+  vendorHash = "sha256-aGFWyDq0HUlOF85VBRD7KN8/qm4iPsXau8W636h6meo=";
   rev = "v" + version;
 in
 buildGoModule rec {
