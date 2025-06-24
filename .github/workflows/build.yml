@@ -68,8 +68,8 @@ jobs:
       - name: Push build to cache
         continue-on-error: true
         run: |-
-          nix copy --to ssh://danu-01.barb-neon.ts.net ".#${{ matrix.comp }}"
-          nix copy --to ssh://danu-02.barb-neon.ts.net ".#${{ matrix.comp }}"
+          nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#${{ matrix.comp }}"
+          nix copy --to ssh://custodian@danu-02.barb-neon.ts.net ".#${{ matrix.comp }}"
 
   release:
     needs:
