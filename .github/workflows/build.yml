@@ -43,10 +43,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Tailscale
+        uses: tailscale/github-action@5d536117a7378beffcd6d8523ce73c50fa98684d # v3.2.1
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
 
       - uses: cachix/install-nix-action@17fe5fb4a23ad6cbbe47d6b3f359611ad276644c # v31
         with:
@@ -62,6 +64,12 @@ jobs:
       - name: Build updated package
         run: |-
           nix build .#${{ matrix.comp }}
+
+      - name: Push build to cache
+        continue-on-error: true
+        run: |-
+          nix copy --to ssh://danu-01.barb-neon.ts.net ".#${{ matrix.comp }}"
+          nix copy --to ssh://danu-02.barb-neon.ts.net ".#${{ matrix.comp }}"
 
   release:
     needs:
