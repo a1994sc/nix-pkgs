@@ -55,7 +55,6 @@ jobs:
         continue-on-error: true
         run: |-
           mkdir -p ~/.ssh
-          chmod 600 ~/.ssh/id_ed25519
 
           cat << 'EOF' >> ~/.ssh/known_hosts
           danu-01.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgtCFdGSN+0iuaD6WpspN7tB7bZk0nuUqeY4Mq7k5Df
