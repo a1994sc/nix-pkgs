@@ -39,6 +39,26 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Tailscale
+        uses: tailscale/github-action@6986d2c82a91fbac2949fe01f5bab95cf21b5102 # v3.2.2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+          args: --ssh
+
+      - name: Setup SSH Keys
+        continue-on-error: true
+        run: |-
+          mkdir -p ~/.ssh
+
+          cat << 'EOF' >> ~/.ssh/known_hosts
+          danu-01.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgtCFdGSN+0iuaD6WpspN7tB7bZk0nuUqeY4Mq7k5Df
+          danu-02.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGGZ4rS2mbNzQYWtYxZIpDv+xLkI4UHLov8ICjH3FkkG
+          EOF
+
+          ssh custodian@danu-01.barb-neon.ts.net echo "SSH connection successful"
+
       - uses: chainguard-dev/actions/setup-gitsign@4f7ad4fd63a4e1c8c11fdb16d543a3eb651036ca # v1.4.2
 
       - name: Configure nix
@@ -69,6 +89,12 @@ jobs:
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
           nix run nixpkgs#nix-update -- --flake legacyPackages.x86_64-linux.${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}
+
+      - name: Push build to caches
+        continue-on-error: true
+        run: |-
+          nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#legacyPackages.x86_64-linux.${{ matrix.pkg }}"
+          nix copy --to ssh://custodian@danu-02.barb-neon.ts.net ".#legacyPackages.x86_64-linux.${{ matrix.pkg }}"
 
       - name: Fetch changes
         run: |-
