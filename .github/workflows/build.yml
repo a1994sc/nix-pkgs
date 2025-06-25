@@ -78,7 +78,7 @@ jobs:
         run: |-
           nix build .#${{ matrix.comp }}
 
-      - name: Push build to cache
+      - name: Push build to caches
         continue-on-error: true
         run: |-
           nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#${{ matrix.comp }}"
@@ -98,12 +98,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      # - name: Tailscale
-      #   uses: tailscale/github-action@5d536117a7378beffcd6d8523ce73c50fa98684d # v3.2.1
-      #   with:
-      #     oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-      #     oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-      #     tags: tag:ci
+      - name: Tailscale
+        uses: tailscale/github-action@5d536117a7378beffcd6d8523ce73c50fa98684d # v3.2.1
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+          args: --ssh
+
+      - name: Setup SSH Keys
+        continue-on-error: true
+        run: |-
+          mkdir -p ~/.ssh
+
+          cat << 'EOF' >> ~/.ssh/known_hosts
+          danu-01.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgtCFdGSN+0iuaD6WpspN7tB7bZk0nuUqeY4Mq7k5Df
+          danu-02.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGGZ4rS2mbNzQYWtYxZIpDv+xLkI4UHLov8ICjH3FkkG
+          EOF
+
+          ssh custodian@danu-01.barb-neon.ts.net echo "SSH connection successful"
 
       - uses: cachix/install-nix-action@17fe5fb4a23ad6cbbe47d6b3f359611ad276644c # v31
         with:
@@ -120,8 +133,8 @@ jobs:
         run: |-
           nix build .#${{ matrix.pkg }}
 
-      # - name: Push build to cache
-      #   continue-on-error: true
-      #   run: |-
-      #     nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#${{ matrix.pkg }}"
-      #     nix copy --to ssh://custodian@danu-02.barb-neon.ts.net ".#${{ matrix.pkg }}"
+      - name: Push build to caches
+        continue-on-error: true
+        run: |-
+          nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#${{ matrix.pkg }}"
+          nix copy --to ssh://custodian@danu-02.barb-neon.ts.net ".#${{ matrix.pkg }}"
