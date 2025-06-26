@@ -2,12 +2,6 @@
   description = "Nix packages";
   inputs = {
     # keep-sorted start block=yes case=no
-    agenix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      url = "github:ryantm/agenix";
-    };
-    agenix-shell.url = "github:aciceri/agenix-shell";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
@@ -38,7 +32,6 @@
         "aarch64-linux"
       ];
       imports = [
-        inputs.agenix-shell.flakeModules.default
         inputs.flake-root.flakeModule
       ];
       perSystem =
