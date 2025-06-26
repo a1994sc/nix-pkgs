@@ -90,9 +90,6 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-          extra_nix_config: |-
-            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-            substituters = ssh://custodian@danu-01.barb-neon.ts.net?priority=1 ssh://custodian@danu-02.barb-neon.ts.net?priority=2 https://cache.nixos.org/
 
       - name: Add cachix actions
         uses: cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad # v16
@@ -100,6 +97,8 @@ jobs:
           name: a1994sc
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
+          extraPullNames: |-
+            ssh://custodian@danu-01.barb-neon.ts.net?priority=1,ssh://custodian@danu-02.barb-neon.ts.net?priority=2
 
       - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
