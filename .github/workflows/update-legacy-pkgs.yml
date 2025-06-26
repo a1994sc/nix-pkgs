@@ -1,8 +1,8 @@
 name: "auto-magic update packages, legacy"
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 0'
+  # schedule:
+  #   - cron: '0 0 * * 0'
 jobs:
   setup:
     runs-on: ubuntu-latest
