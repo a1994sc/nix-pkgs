@@ -77,8 +77,8 @@ jobs:
             },
             "extra-trusted-substituters": {
               "https://a1994sc.cachix.org": true,
-              "ssh://custodian@danu-01.barb-neon.ts.net": true,
-              "ssh://custodian@danu-02.barb-neon.ts.net": true
+              "ssh://custodian@danu-01.barb-neon.ts.net?priority=1": true,
+              "ssh://custodian@danu-02.barb-neon.ts.net?priority=1": true
             },
             "trusted-public-keys": {
               "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true,
