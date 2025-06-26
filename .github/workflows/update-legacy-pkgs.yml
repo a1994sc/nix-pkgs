@@ -65,8 +65,8 @@ jobs:
           mkdir -p ~/.local/share/nix ~/.config/nix/nix
 
           cat << 'EOF' >> ~/.config/nix/nix.conf
-          substituters = https://danu-01.barb-neon.ts.net?priority=1 https://danu-02.barb-neon.ts.net?priority=2 https://cache.nixos.org/ https://a1994sc.cachix.org
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI= danu-01.barb-neon.ts.net:YsJLlRCoNlqCI0U3FZSOXBkjoxBSbn9e2/JKU5U+sG4= danu-02.barb-neon.ts.net:72+XyWbHlihra4BU5UKQmrV+Z8OBA+9BnD2Gq03GyVY=
+          substituters = https://cache.nixos.org/ https://a1994sc.cachix.org
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=
           EOF
 
           cat << 'EOF' >> ~/.local/share/nix/trusted-settings.json
@@ -106,8 +106,8 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           extra_nix_config: |-
-            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-            substituters = ssh://custodian@danu-01.barb-neon.ts.net?priority=1 ssh://custodian@danu-02.barb-neon.ts.net?priority=2 https://cache.nixos.org/
+            substituters = https://danu-01.barb-neon.ts.net?priority=1 https://danu-02.barb-neon.ts.net?priority=2 https://cache.nixos.org/ https://a1994sc.cachix.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI= danu-01.barb-neon.ts.net:YsJLlRCoNlqCI0U3FZSOXBkjoxBSbn9e2/JKU5U+sG4= danu-02.barb-neon.ts.net:72+XyWbHlihra4BU5UKQmrV+Z8OBA+9BnD2Gq03GyVY=
 
       - name: Add cachix actions
         uses: cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad # v16
