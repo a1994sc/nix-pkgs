@@ -13,7 +13,7 @@ let
   pname = "uds";
   version = "0.27.7";
   sha256 = "sha256-OwXJyoe5tfhIs7LH9fMuhATU1bi9i7PZFYI0qOECRRw=";
-  vendorHash = "sha256-kPhTnjo4Dh7x9OmYNYBiSTEfAdL+QYiOmNbzZ9pmmYM=";
+  vendorHash = "sha256-Rsx3ZMUY9kdM9M2IvDah81/hBySErP5/pmHlS2rluqY=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
@@ -25,6 +25,8 @@ let
 in
 buildGoModule rec {
   inherit version pname vendorHash;
+
+  proxyVendor = true;
 
   src = fetchFromGitHub {
     inherit rev sha256;
@@ -71,9 +73,9 @@ buildGoModule rec {
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     export K9S_LOGS_DIR=$(mktemp -d)
     installShellCompletion --cmd ${pname} \
-      --bash <($out/bin/${pname} completion bash) \
-      --fish <($out/bin/${pname} completion fish) \
-      --zsh  <($out/bin/${pname} completion zsh)
+      --bash <($out/bin/${pname} --no-log-file --uds-cache $TMPDIR completion bash) \
+      --fish <($out/bin/${pname} --no-log-file --uds-cache $TMPDIR completion fish) \
+      --zsh  <($out/bin/${pname} --no-log-file --uds-cache $TMPDIR completion zsh)
   '';
 
   meta = with lib; {
