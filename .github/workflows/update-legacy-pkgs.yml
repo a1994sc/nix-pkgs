@@ -59,6 +59,30 @@ jobs:
 
           ssh custodian@danu-01.barb-neon.ts.net echo "SSH connection successful"
 
+      - name: Setup Nix config
+        continue-on-error: true
+        run: |-
+          mkdir -p ~/.local/share/nix
+
+          cat << 'EOF' >> ~/.local/share/nix/trusted-settings.json
+          {
+            "extra-substituters": {
+              "a1994sc.cachix.org": true,
+              "https://a1994sc.cachix.org": true
+            },
+            "extra-trusted-public-keys": {
+              "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true
+            },
+            "extra-trusted-substituters": {
+              "https://a1994sc.cachix.org": true
+            },
+            "trusted-public-keys": {
+              "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true,
+              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true
+            }
+          }
+          EOF
+
       - uses: chainguard-dev/actions/setup-gitsign@4f7ad4fd63a4e1c8c11fdb16d543a3eb651036ca # v1.4.2
 
       - name: Configure nix

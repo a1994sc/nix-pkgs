@@ -36,6 +36,9 @@ buildGoModule {
     installShellFiles
   ];
 
+  # failed to get CTLog public keys from TUF: creating cached local store: mkdir /homeless-shelter: permission denied
+  HOME = "$TMPDIR";
+
   subPackages = [
     "cmd/cosign"
   ];
