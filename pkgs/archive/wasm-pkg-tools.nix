@@ -6,9 +6,9 @@
 let
   # keep-sorted start prefix_order=pname,version,sha256
   pname = "wasm-pkg-tools";
-  version = "0.10.0";
-  sha256 = "sha256-VZ+rUZi6o2onMFxK/BMyi6ZjuDS0taJh5w3r33KCZTU=";
-  cargoHash = "sha256-dHhJT/edEYagLQoUcXCLPA4fUJdN9ZoOITLpWAH5p/0=";
+  version = "0.11.0";
+  sha256 = "sha256-l8ArzujFirquSKMDkcoP8KukLFCRB7U8BejzMGUD59Y=";
+  cargoHash = "sha256-ngVnF2eLZfa4ziliAaJOmu5YbnetEovH66kWXp2w1gY=";
   # keep-sorted end
   rev = "v" + version;
 in
