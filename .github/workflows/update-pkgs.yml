@@ -105,65 +105,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Tailscale
-        uses: tailscale/github-action@84a3f23bb4d843bcf4da6cf824ec1be473daf4de # v3.2.3
+      - name: Install Nix environment
+        uses: ./.github/actions/install-tools
         with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
-          args: --ssh
-
-      - name: Setup SSH Keys
-        continue-on-error: true
-        timeout-minutes: 2
-        run: |-
-          mkdir -p ~/.ssh
-
-          cat << 'EOF' >> ~/.ssh/known_hosts
-          danu-01.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgtCFdGSN+0iuaD6WpspN7tB7bZk0nuUqeY4Mq7k5Df
-          danu-02.barb-neon.ts.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGGZ4rS2mbNzQYWtYxZIpDv+xLkI4UHLov8ICjH3FkkG
-          EOF
-
-          ssh custodian@danu-01.barb-neon.ts.net echo "SSH connection successful"
-
-      - name: Setup Nix config
-        continue-on-error: true
-        run: |-
-          mkdir -p ~/.local/share/nix
-
-          cat << 'EOF' >> ~/.local/share/nix/trusted-settings.json
-          {
-            "extra-substituters": {
-              "a1994sc.cachix.org": true,
-              "https://a1994sc.cachix.org": true
-            },
-            "extra-trusted-public-keys": {
-              "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true
-            },
-            "extra-trusted-substituters": {
-              "https://a1994sc.cachix.org": true
-            },
-            "trusted-public-keys": {
-              "a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true,
-              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI=": true
-            }
-          }
-          EOF
-
-      - uses: chainguard-dev/actions/setup-gitsign@4f7ad4fd63a4e1c8c11fdb16d543a3eb651036ca # v1.4.2
-
-      - name: Configure nix
-        uses: cachix/install-nix-action@f0fe604f8a612776892427721526b4c7cfb23aba # v31.4.1
-        with:
-          nix_path: nixpkgs=github:NixOS/nixpkgs/nixos-unstable-small
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Add cachix actions
-        uses: cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad # v16
-        with:
-          name: a1994sc
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          cachix-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          tailscale_client: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          tailscale_secret: ${{ secrets.TS_OAUTH_SECRET }}
 
       - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
