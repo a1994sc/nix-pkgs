@@ -49,12 +49,11 @@ jobs:
 
       - uses: chainguard-dev/actions/setup-gitsign@4f7ad4fd63a4e1c8c11fdb16d543a3eb651036ca # v1.4.2
 
-      - name: Configure nix
-        uses: cachix/install-nix-action@f0fe604f8a612776892427721526b4c7cfb23aba # v31.4.1
+      - name: Configure nix, Determinate Systems
+        uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v31.4.1
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-          extra_nix_config: |-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          extra-conf:  |-
             substituters = https://danu-01.barb-neon.ts.net?priority=1 https://danu-02.barb-neon.ts.net?priority=2 https://cache.nixos.org/ https://a1994sc.cachix.org
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= a1994sc.cachix.org-1:xZdr1tcv+XGctmkGsYw3nXjO1LOpluCv4RDWTqJRczI= danu-01.barb-neon.ts.net:wjXASA3VF+ryB3brRo8vPMuYwVGrjsIa+a3pe8zV86o= danu-02.barb-neon.ts.net:SqCBNF/wWsRQU5QGLhoV58KEcEZKRW39LQxxXYWLH/0=
 

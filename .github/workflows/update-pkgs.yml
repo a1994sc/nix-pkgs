@@ -166,6 +166,7 @@ jobs:
 
       - name: Setup SSH Keys
         continue-on-error: true
+        timeout-minutes: 2
         run: |-
           mkdir -p ~/.ssh
 
