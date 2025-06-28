@@ -114,6 +114,9 @@
               inherit (pkgs) callPackage;
               directory = ./pkgs/core;
             }
+            // {
+              clang = pkgs.clang;
+            }
             # TL;DR: Looks through pkgs/multi,
             # finds all the folders,
             # then for each folder finds each version of the main program,
