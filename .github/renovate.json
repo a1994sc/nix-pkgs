@@ -10,5 +10,9 @@
   "github-actions": {
     "enabled": false
   },
+  "pip-compile": {
+    "managerFilePatterns": ["/(^|/)constraints\\.txt$/"],
+    "enabled": true
+  },
   "dependencyDashboard": true
 }
