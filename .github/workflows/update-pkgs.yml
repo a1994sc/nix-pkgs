@@ -18,7 +18,7 @@ jobs:
         env:
           PKG_DIR: pkgs/core
         run: |-
-          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I0 '. = ([.packages.x86_64-linux | keys | .[] | select(. != "go-1*") | select(. != "clang")]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
+          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I0 '. = ([.packages.x86_64-linux | keys | .[] | select(. != "go-1*")]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
 
   go-lang:
     runs-on: ubuntu-latest
