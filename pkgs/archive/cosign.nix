@@ -14,9 +14,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "cosign";
-  version = "2.5.0";
-  sha256 = "sha256-QvU+JpIcE9EX+ehRWvs2bS2VGgGVekNX8f5+mITIwU0=";
-  vendorHash = "sha256-qIi+Pp4XZg1GxOhM9fCyD9rPaIiQHhoQudB50gzWgrM=";
+  version = "2.5.2";
+  sha256 = "sha256-cfdAzY677wTgw0pD05UUiGoexcQdrDocFJWXgNeZbRs=";
+  vendorHash = "sha256-LHit7Ew4Zu/ff6BaNLPniRcMn75luGShMhHDszixegc=";
   # keep-sorted end
   rev = "refs/tags/v" + version;
 in
@@ -61,6 +61,8 @@ buildGoModule {
 
     rm pkg/cosign/ctlog_test.go # Require network access
     rm pkg/cosign/tlog_test.go # Require network access
+    rm pkg/cosign/verify_sct_test.go # Require network access
+    rm pkg/cosign/verify_test.go # Require network access
     rm cmd/cosign/cli/verify/verify_test.go # Require network access
     rm cmd/cosign/cli/verify/verify_blob_attestation_test.go # Require network access
     rm cmd/cosign/cli/verify/verify_blob_test.go # Require network access

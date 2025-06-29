@@ -32,15 +32,11 @@ jobs:
     strategy:
       matrix:
         comp:
-          - "clang"
           - "go-1-23"
           - "go-1-24"
         os:
           - ubuntu-24.04
           - ubuntu-24.04-arm
-        exclude:
-          - os: ubuntu-24.04-arm
-            comp: "clang"
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2

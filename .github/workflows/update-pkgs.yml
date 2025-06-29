@@ -18,7 +18,7 @@ jobs:
         env:
           PKG_DIR: pkgs/core
         run: |-
-          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I=0 '. = ([.packages.x86_64-linux | keys | .[] | select(test("[^0-9]+$"))]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
+          echo "matrix=$(nix flake show --json --all-systems 2>/dev/null | yq -M -pj -oj -I0 '. = ([.packages.x86_64-linux | keys | .[] | select(. != "go-1*") | select(. != "clang")]) | .[] |= {"pkg": .} | {"include": .}')" >> $GITHUB_OUTPUT
 
   go-lang:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
 
       - name: Get latest version of 1.${{ matrix.version }}
         run: |-
-          nix run nixpkgs#nix-update -- --flake go-1-${{ matrix.version }} --build --version ${{ steps.latest-version.outputs.version }}
+          nix run nixpkgs#nix-update -- --flake go-1-${{ matrix.version }} --version ${{ steps.latest-version.outputs.version }}
 
       - name: Push build to caches
         continue-on-error: true
@@ -127,7 +127,7 @@ jobs:
       - name: Build package with latest version
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
-          nix run nixpkgs#nix-update -- --flake ${{ matrix.pkg }} --build --version ${{ steps.latest-version.outputs.version }}
+          nix run nixpkgs#nix-update -- --flake ${{ matrix.pkg }} --version ${{ steps.latest-version.outputs.version }}
 
       - name: Push build to caches
         continue-on-error: true
