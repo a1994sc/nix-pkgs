@@ -10,7 +10,7 @@
   "github-actions": {
     "enabled": false
   },
-  "pip-compile": {
+  "pip": {
     "managerFilePatterns": ["/(^|/)constraints\\.txt$/"],
     "enabled": true
   },
