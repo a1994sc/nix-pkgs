@@ -10,9 +10,15 @@
   "github-actions": {
     "enabled": false
   },
-  "pip": {
-    "managerFilePatterns": ["/(^|/)constraints\\.txt$/"],
-    "enabled": true
-  },
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "pypi"
+      ],
+      "managerFilePatterns": [
+        "/(^|/)constraints\\.txt$/"
+      ]
+    }
+  ],
   "dependencyDashboard": true
 }
