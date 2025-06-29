@@ -56,7 +56,7 @@ jobs:
       - name: Get latest version
         id: latest-version
         run: |
-          pip install --constraint=.github/constraints.txt lastversion
+          pip install --constraint=.github/requirements.txt lastversion
           echo "version=$(python -m lastversion ${{ steps.homepage.outputs.URL }})" >> "$GITHUB_OUTPUT"
 
       - name: Build package with latest version

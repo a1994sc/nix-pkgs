@@ -10,15 +10,5 @@
   "github-actions": {
     "enabled": false
   },
-  "packageRules": [
-    {
-      "matchDatasources": [
-        "pypi"
-      ],
-      "managerFilePatterns": [
-        "/(^|/)constraints\\.txt$/"
-      ]
-    }
-  ],
   "dependencyDashboard": true
 }

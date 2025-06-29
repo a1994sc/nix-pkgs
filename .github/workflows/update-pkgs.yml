@@ -53,7 +53,7 @@ jobs:
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pip install --constraint=.github/constraints.txt lastversion
+          pip install --constraint=.github/requirements.txt lastversion
           echo "version=$(python -m lastversion --only '~1.${{ matrix.version }}' https://github.com/golang/go)" >> "$GITHUB_OUTPUT"
 
       - name: Get latest version of 1.${{ matrix.version }}
@@ -124,7 +124,7 @@ jobs:
       - name: Get latest version
         id: latest-version
         run: |
-          pip install --constraint=.github/constraints.txt lastversion
+          pip install --constraint=.github/requirements.txt lastversion
           echo "version=$(python -m lastversion ${{ steps.homepage.outputs.URL }})" >> "$GITHUB_OUTPUT"
 
       - name: Build package with latest version
