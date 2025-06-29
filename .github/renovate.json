@@ -7,6 +7,15 @@
   "assignees": [
     "@A1994SC"
   ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "pip_requirements"
+      ],
+      "groupName": "Python",
+      "groupSlug": "python"
+    }
+  ],
   "github-actions": {
     "enabled": false
   },
