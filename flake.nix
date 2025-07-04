@@ -94,14 +94,12 @@
               pkgs.nix-prefetch
               pkgs.nix-output-monitor
               pkgs.cachix
-              self.legacyPackages.${system}.lastversion
             ];
           };
           devShells.ci = pkgs.mkShell {
             packages = with pkgs; [
               nix-update
               nix-output-monitor
-              self.legacyPackages.${system}.lastversion
             ];
           };
           formatter = fmt.config.build.wrapper;
