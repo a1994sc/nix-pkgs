@@ -13,8 +13,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "lazysql";
-  version = "0.3.7";
-  sha256 = "sha256-fpzcCCLkUJGuTfQiADwLL2238LP0TJJMYAXUwCfPkFM=";
+  version = "0.3.8";
+  sha256 = "sha256-aRySSDNqxdu4kZRohvG/PmOK3Uipvnw9DctJ8h5vl2g=";
   vendorHash = "sha256-LLOUTml/mz7edCUy82k+S5PfpFovgUTQr0BoQQXiVGs=";
   # keep-sorted end
   rev = "v" + version;
