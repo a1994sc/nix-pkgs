@@ -12,9 +12,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "terragrunt";
-  version = "0.82.3";
-  sha256 = "sha256-qDzqJRjRcK0CIn1ARL+InnPtzRIqN/AIxPLE+J9pE1k=";
-  vendorHash = "sha256-d8h/mdcqnL7wkg+ZqWt2ywSLD37Oddb8ub59XGEmSWk=";
+  version = "0.83.0";
+  sha256 = "sha256-AvBWcl1F4dVpXsoaJTWKAkWp5IbzFtKgiloUvVFgtDM=";
+  vendorHash = "sha256-iSS19vUuXA6qqtZQbkJlXkTZtxikkypFdlmRwmM63+k=";
   # keep-sorted end
   rev = "v" + version;
 in
