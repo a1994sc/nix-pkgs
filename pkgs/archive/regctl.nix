@@ -10,9 +10,9 @@
 let
   # keep-sorted start prefix_order=pname,version,sha256
   pname = "regclient";
-  version = "0.8.3";
-  sha256 = "sha256-/RZcq0zDirnqlBiOrxzyHzQuJx6R64Fl1SmtjWwXop4=";
-  vendorHash = "sha256-ad7IPiOMG4G80BdAZz7IN0hBPJgUIVdO9oFlM7IDmp8=";
+  version = "0.9.0";
+  sha256 = "sha256-oMct63KYBXb7ox01AyQZEdoBE0K9E5gTCYvpcJnUv30=";
+  vendorHash = "sha256-MP/drjUbST5s3NKQ6omVOLSvl4rdPSfVaM0zlF/9Cq0=";
   # keep-sorted end
   rev = "v" + version;
   bins = [
