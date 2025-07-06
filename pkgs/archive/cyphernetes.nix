@@ -11,8 +11,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "cyphernetes";
-  version = "0.18.0";
-  sha256 = "sha256-rRnVQIeut2s4G606u7O7O6sSVfrfasYM0UvpLMS14pA=";
+  version = "0.18.2";
+  sha256 = "sha256-U0m0OVgxr9qGthAP/laMyEegzDm5KelFdXbLQHPxyfk=";
   vendorHash = "sha256-OsXrCh0Dzvq0zcOlCC4XGmAaKMsUF6ofFVdp8ss19j8=";
   # keep-sorted end
   rev = "v" + version;
