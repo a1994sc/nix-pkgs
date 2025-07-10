@@ -12,10 +12,10 @@
 }:
 let
   # keep-sorted start prefix_order=version,
-  version = "2.6.1";
-  manifestsSha256 = "sha256-Kmf9EFOtJI71XtMIVl5NmNvH31UpwoN5ecZufZXCZj4=";
-  sha256 = "sha256-BVfgxYoVPRAh/I2aNp1tPytB0JS2BJvzy6zR/18f170=";
-  vendorHash = "sha256-RMfxRik5x/DhG6ZFvTmTXUsGZ9OUTq96wHjvUXqY2bY=";
+  version = "2.6.4";
+  manifestsSha256 = "sha256-zhxYTBidIY2bQz1e8wVlbq3B+2c2fLrQenvAD7h6JYg=";
+  sha256 = "sha256-uUjdS0vcg6XgHBGEr2A+nc9y0QS7cuMLiOckKm+eio4=";
+  vendorHash = "sha256-U37QdGfj7+YXIARORo0AHqgdzrODyUe5DA+eefxzTWA=";
   # keep-sorted end
 in
 callPackage ./. {

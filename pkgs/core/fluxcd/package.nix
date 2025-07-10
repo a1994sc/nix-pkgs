@@ -13,7 +13,7 @@ let
   # keep-sorted start prefix_order=pname,version,
   pname = "fluxcd";
   version = "2.6.4";
-  manifestsSha256 = "sha256-KXvYURCJ1/BI61jes0Pvy6giKvVmosWOHuzGRHCcqZo=";
+  manifestsSha256 = "sha256-zhxYTBidIY2bQz1e8wVlbq3B+2c2fLrQenvAD7h6JYg=";
   sha256 = "sha256-uUjdS0vcg6XgHBGEr2A+nc9y0QS7cuMLiOckKm+eio4=";
   vendorHash = "sha256-U37QdGfj7+YXIARORo0AHqgdzrODyUe5DA+eefxzTWA=";
   # keep-sorted end
