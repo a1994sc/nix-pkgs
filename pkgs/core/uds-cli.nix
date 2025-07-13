@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "uds";
-  version = "0.27.8";
-  sha256 = "sha256-6uKlzwbx95EtmFs9TPtkUgulCeoNRst/9j0Z76dTSB8=";
-  vendorHash = "sha256-VGY1A1tswncauW/TrDwk0m7wpMYSkUrJPKBKzcL3hok=";
+  version = "0.27.9";
+  sha256 = "sha256-g9gsVKEa7+u57BuFh+jLyo/SetMiKOAKzcYlR+Of+eE=";
+  vendorHash = "sha256-ykC/XMRuOUzlQlUR7iB15fYcFGI/xMNcts8WRs7e7B8=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
@@ -40,7 +40,7 @@ buildGoModule rec {
     ldflags+=" -X ${flag.k9s}/cmd.version=$(go list -f '{{.Version}}' -m github.com/derailed/k9s)"
     ldflags+=" -X ${flag.google}/cmd.Version=$(go list -f '{{.Version}}' -m github.com/google/go-containerregistry)"
     ldflags+=" -X ${flag.zarf}/cmd/tools.syftVersion=$(go list -f '{{.Version}}' -m github.com/anchore/syft)"
-    ldflags+=" -X ${flag.zarf}/cmd/tools.archiverVersion=$(go list -f '{{.Version}}' -m github.com/mholt/archiver/v3)"
+    ldflags+=" -X ${flag.zarf}/cmd/tools.archivesVersion=$(go list -f '{{.Version}}' -m github.com/mholt/archives)"
     ldflags+=" -X ${flag.zarf}/cmd/tools.helmVersion=$(go list -f '{{.Version}}' -m helm.sh/helm/v3)"
   '';
 
