@@ -16,9 +16,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "step-ca";
-  version = "0.28.3";
-  sha256 = "sha256-5W39Nc6WuxhrXbEfPWMaWWAUX6UnjYqlEAPlDCeYgrY=";
-  vendorHash = "sha256-AuMYdZa1QpmMQZxlv+lmoWtszQkVdwXOTXxY8CWaUbI=";
+  version = "0.28.4";
+  sha256 = "sha256-pN+zvLZuBfw40KCegh7J5RzDOXgbLHNhhFJRFSKhlYc=";
+  vendorHash = "sha256-gGPrrl5J8UrjUpof2DaSs1fAQsMSsyAMlC67h5V75+k=";
   # keep-sorted end
   rev = "v" + version;
 in
