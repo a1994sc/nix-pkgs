@@ -11,10 +11,10 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "eksctl";
-  version = "0.210.0";
+  version = "0.211.0";
   owner = "eksctl-io";
-  sha256 = "sha256-uDLm/kLilLA5AyeTQDMpbpFb1+54RlPQPRRZG9HcH0U=";
-  vendorHash = "sha256-vhYexIdkn8Y5U5YZewj/O8sJCt/VimZU4E4kn0/1lU4=";
+  sha256 = "sha256-PKNCyk0ty3afZ1V3gLNSbxBvmo30bHa/yH2w+cR9xQU=";
+  vendorHash = "sha256-sUoidROptTEDqGdb30BFJazf/I2Ggmx3GUs6xE69nNI=";
   # keep-sorted end
   rev = "v" + version;
 in
