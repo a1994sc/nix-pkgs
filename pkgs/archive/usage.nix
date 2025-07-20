@@ -6,9 +6,9 @@
 let
   # keep-sorted start prefix_order=pname,version,sha256
   pname = "usage";
-  version = "2.1.1";
-  sha256 = "sha256-aMO/3geF1iFnMi0ZqBdnikp/Qh25vqpeaxdTiQtt5yI=";
-  cargoHash = "sha256-0NQZtT3xz4MaqY8ehKzy/cpDJlE5eWIixi3IropK11w=";
+  version = "2.2.2";
+  sha256 = "sha256-Hnq3ViMrNIo9m/1mePjEzMv87U24wY50UiYxnpJqHR8=";
+  cargoHash = "sha256-Zj8Z88gYx+i0VN14HbO1LSlWjZX1EvrtyKvAwpnFMgs=";
   # keep-sorted end
   rev = "v" + version;
 in
