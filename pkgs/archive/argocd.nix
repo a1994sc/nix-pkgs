@@ -11,8 +11,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "argocd";
-  version = "3.0.11";
-  sha256 = "sha256-sv1wpjlRqoBAWT+fEKzpmpq0rR7ZtWUc5+tZzXdYPMo=";
+  version = "3.0.12";
+  sha256 = "sha256-qHyeDO1RcD/1+M+ZF0Dschr8ivvOHIw0hWucPPiy4E0=";
   vendorHash = "sha256-mRZyO2UZ7KrIkaZ+X004OCdfivWywnVWsgMY7KhwbGg=";
   # keep-sorted end
   rev = "v" + version;
