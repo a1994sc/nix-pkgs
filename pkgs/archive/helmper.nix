@@ -9,9 +9,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "helmper";
-  version = "0.2.4";
-  sha256 = "sha256-q5ek5VzOZW1KWLRK6lsAdNbQUXhIZxONyAI/+0gP4Ms=";
-  vendorHash = "sha256-mgbL1A4GyFn7GQScxENTLBg3z7GPbZNFJpmssR2jxAQ=";
+  version = "0.3.0";
+  sha256 = "sha256-THJFMR14L3j8D5s+F+I1K5K+R9SzR95NCSOXjIslayw=";
+  vendorHash = "sha256-/BwXWvumPR9j/hCqoGX5xIYdjQvZ7DyxgNqla9bXOBQ=";
   # keep-sorted end
   rev = "v" + version;
   flag.helmper = "github.com/ChristofferNissen/helmper";
