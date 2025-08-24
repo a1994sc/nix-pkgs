@@ -13,9 +13,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "clusterctl";
-  version = "1.10.4";
-  sha256 = "sha256-MMwM1hWZd1DdiymRAJrcFD4YoLqP0wrgDV5oIv7Lkxo=";
-  vendorHash = "sha256-YFtlu9ml7ZHG+m8se4K229+kzbiBZ4+dcJhFFIH7XgA=";
+  version = "1.11.0";
+  sha256 = "sha256-OZhlHLbe/6RYcBos4QeshRq0YDDt/vDvwafV6uyJWr8=";
+  vendorHash = "sha256-kQ/hbeOoNO+F5NE2ZyEA902YCA/O6KbOrNwv1+tvSJM=";
   # keep-sorted end
   rev = "v" + version;
 in
