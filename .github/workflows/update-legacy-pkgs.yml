@@ -42,7 +42,7 @@ jobs:
       - uses: chainguard-dev/actions/setup-gitsign@be7b31a01af8ce7228fe901326f1d223fb788e14 # v1.4.12
 
       - name: Configure nix, Determinate Systems
-        uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v31.4.1
+        uses: DeterminateSystems/nix-installer-action@90bb610b90bf290cad97484ba341453bd1cbefea # v31.4.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
