@@ -49,9 +49,9 @@
               (final: prev: {
                 go-fuseftp = self.legacyPackages.${system}.go-fuseftp;
                 cosign-hauler = self.legacyPackages.${system}.cosign-hauler;
-                go_1_23 = self.packages.${system}.go-1-23;
-                go_1_24 = self.packages.${system}.go-1-24;
-                asciiBuildGoModule = prev.buildGo124Module;
+                asciiBuildGoModule = prev.buildGo124Module.override {
+                  go = self.packages.${system}.go-1-24;
+                };
               })
             ];
           };
