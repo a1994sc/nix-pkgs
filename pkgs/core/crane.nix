@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
   lib,
@@ -20,7 +20,7 @@ let
     "gcrane"
   ];
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

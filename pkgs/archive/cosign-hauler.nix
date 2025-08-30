@@ -1,7 +1,7 @@
 {
   stdenv,
   lib,
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   pcsclite,
   pkg-config,
@@ -20,7 +20,7 @@ let
   # keep-sorted end
   rev = "refs/tags/v" + version;
 in
-buildGoModule {
+asciiBuildGoModule {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

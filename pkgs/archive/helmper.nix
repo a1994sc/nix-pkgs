@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   lib,
   # keep-sorted end
@@ -16,7 +16,7 @@ let
   rev = "v" + version;
   flag.helmper = "github.com/ChristofferNissen/helmper";
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
   lib,
@@ -19,7 +19,7 @@ let
   rev = "refs/tags/v" + version;
   versionK3S = "1.31.1+k3s1"; # renovate: depName=k3s-io/k3s
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
   lib,
@@ -24,7 +24,7 @@ let
     google = "github.com/google/go-containerregistry/cmd/crane";
   };
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

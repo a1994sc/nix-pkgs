@@ -1,7 +1,7 @@
 {
   lib,
   stdenv,
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
   nixosTests,
@@ -30,7 +30,7 @@ let
       "${repo}@${version}"
     ) attrs;
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   pname = "coredns";
   version = "1.12.3";
 

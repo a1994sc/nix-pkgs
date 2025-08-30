@@ -1,6 +1,6 @@
 {
   lib,
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
   lndir,
@@ -21,7 +21,7 @@ let
     "regsync"
   ];
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
   tag = rev;
 

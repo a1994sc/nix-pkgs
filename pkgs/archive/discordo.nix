@@ -1,6 +1,6 @@
 {
   lib,
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   nix-update-script,
   makeWrapper,
@@ -16,7 +16,7 @@ let
   # keep-sorted end
   rev = "eeb54e0577144eacc371f5bc3859faaa59ddf750";
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

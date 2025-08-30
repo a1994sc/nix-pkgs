@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   coreutils,
   fetchFromGitHub,
   installShellFiles,
@@ -15,7 +15,7 @@
   ...
 }:
 let
-  package = buildGoModule rec {
+  package = asciiBuildGoModule rec {
     pname = "opentofu";
     version = "1.10.5";
 

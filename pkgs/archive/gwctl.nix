@@ -1,6 +1,6 @@
 {
   lib,
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
 }:
@@ -13,7 +13,7 @@ let
   # keep-sorted end
   rev = "v" + version;
 in
-buildGoModule {
+asciiBuildGoModule {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

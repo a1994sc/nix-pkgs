@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   cosign-hauler,
   fetchFromGitHub,
   fetchurl,
@@ -26,7 +26,7 @@ let
   arch = if system == "x86_64-linux" then "amd64" else "arm64";
   os = if stdenv.isLinux then "linux" else "darwin";
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

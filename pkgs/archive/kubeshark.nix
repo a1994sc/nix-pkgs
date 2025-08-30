@@ -1,7 +1,7 @@
 {
   stdenv,
   lib,
-  buildGoModule,
+  asciiBuildGoModule,
   fetchFromGitHub,
   installShellFiles,
   testers,
@@ -20,7 +20,7 @@ let
     kubeshark = "github.com/kubeshark/kubeshark";
   };
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

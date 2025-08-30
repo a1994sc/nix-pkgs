@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   coreutils,
   darwin,
   fetchFromGitHub,
@@ -22,7 +22,7 @@ let
   # keep-sorted end
   rev = "v" + version;
 in
-buildGoModule rec {
+asciiBuildGoModule rec {
   inherit version pname vendorHash;
 
   src = fetchFromGitHub {

@@ -1,6 +1,6 @@
 {
   # keep-sorted start
-  buildGoModule,
+  asciiBuildGoModule,
   callPackage,
   fetchFromGitHub,
   installShellFiles,
@@ -19,7 +19,7 @@ in
 callPackage ./. {
   inherit
     # keep-sorted start
-    buildGoModule
+    asciiBuildGoModule
     fetchFromGitHub
     installShellFiles
     lib
