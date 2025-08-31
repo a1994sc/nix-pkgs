@@ -39,14 +39,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Nix environment
-        uses: ./.github/actions/install-tools
-        timeout-minutes: 10
+      - uses: chainguard-dev/actions/setup-gitsign@be7b31a01af8ce7228fe901326f1d223fb788e14 # v1.4.12
+
+      - name: Configure nix, Determinate Systems
+        uses: DeterminateSystems/nix-installer-action@90bb610b90bf290cad97484ba341453bd1cbefea # v31.4.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          cachix-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
-          tailscale_client: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          tailscale_secret: ${{ secrets.TS_OAUTH_SECRET }}
+
+      - name: Add cachix actions
+        uses: cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad # v16
+        with:
+          name: a1994sc
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
 
       - name: Get latest version
         id: latest-version
@@ -59,12 +64,6 @@ jobs:
       - name: Get latest version of 1.${{ matrix.version }}
         run: |-
           nix run nixpkgs#nix-update -- --flake go-1-${{ matrix.version }} --version ${{ steps.latest-version.outputs.version }}
-
-      - name: Push build to caches
-        continue-on-error: true
-        run: |-
-          nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#go-1-${{ matrix.version }}"
-          nix copy --to ssh://custodian@danu-02.barb-neon.ts.net ".#go-1-${{ matrix.version }}"
 
       - name: Commit & Push changes
         id: commit
@@ -107,14 +106,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Nix environment
-        uses: ./.github/actions/install-tools
-        timeout-minutes: 10
+      - uses: chainguard-dev/actions/setup-gitsign@be7b31a01af8ce7228fe901326f1d223fb788e14 # v1.4.12
+
+      - name: Configure nix, Determinate Systems
+        uses: DeterminateSystems/nix-installer-action@90bb610b90bf290cad97484ba341453bd1cbefea # v31.4.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          cachix-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
-          tailscale_client: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          tailscale_secret: ${{ secrets.TS_OAUTH_SECRET }}
+
+      - name: Add cachix actions
+        uses: cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad # v16
+        with:
+          name: a1994sc
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          pushFilter: (-source$|-go-modules$|.tar.gz$|-dist$|.patch$)
 
       - name: Get the url for package ${{ matrix.pkg }}
         id: homepage
@@ -131,12 +135,6 @@ jobs:
         if: ${{ steps.latest-version.outputs.version != '' }}
         run: |-
           nix run nixpkgs#nix-update -- --flake ${{ matrix.pkg }} --version ${{ steps.latest-version.outputs.version }}
-
-      - name: Push build to caches
-        continue-on-error: true
-        run: |-
-          nix copy --to ssh://custodian@danu-01.barb-neon.ts.net ".#${{ matrix.pkg }}"
-          nix copy --to ssh://custodian@danu-02.barb-neon.ts.net ".#${{ matrix.pkg }}"
 
       - name: Fetch changes
         run: |-
