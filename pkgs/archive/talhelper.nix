@@ -10,9 +10,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "talhelper";
-  version = "3.0.32";
-  sha256 = "sha256-pLVR/vD7wMH/8UziWe5nwL/fBrexg1BtiJouRb73L4E=";
-  vendorHash = "sha256-zmB1XEU6k6PPuz3J9btDJmP0wpj//Ya1xDtkdv+7P24=";
+  version = "3.0.33";
+  sha256 = "sha256-8C3I+cP07BXB9/pd3Vt4KLqgfcGFbCy8uViZ6+44hVQ=";
+  vendorHash = "sha256-Ya7dhbuvLh3mWjtdJkFqtlyiQtZqI4SkW2coGSteQak=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
