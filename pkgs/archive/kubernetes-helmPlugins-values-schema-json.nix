@@ -9,9 +9,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "helm-values-schema-json";
-  version = "2.2.1";
-  sha256 = "sha256-dttUbP+G2q+IJwoYReSfJVnc/Dix3Bk0H0EkuCuU9Ko=";
-  vendorHash = "sha256-+Idcps9Z/56rvlSYVX8cw4Rbg/2Kt9bzhwtN3clQ3XY=";
+  version = "2.3.0";
+  sha256 = "sha256-q5A+tCnuHTtUyejP4flID7XhsoBfWGge2jCgsL0uEOc=";
+  vendorHash = "sha256-xmj2i1WNI/9ItbxRk8mPIygjq83xuvNu6THyPqZsysY=";
   # keep-sorted end
   rev = "v" + version;
 in
