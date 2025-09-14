@@ -10,9 +10,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "packer";
-  version = "1.14.1";
-  sha256 = "sha256-3g9hsmrfLzGhjcGvUza/L9PMGUFw+KLbg2pIK0CxlQI=";
-  vendorHash = "sha256-F6hn+pXPyPe70UTK8EF24lk7ArYz7ygUyVVsatW6+hI=";
+  version = "1.14.2";
+  sha256 = "sha256-PR2wKpqU4pL5OurOR+ju9yil6cJF5WRXmVP0g9JF5KM=";
+  vendorHash = "sha256-LJklEYxNYwRQNdxoO1FUCD1kK38+eptGBff+3MHT44U=";
   # keep-sorted end
   rev = "v" + version;
 in
