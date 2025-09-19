@@ -34,6 +34,7 @@ jobs:
         comp:
           - "go-1-23"
           - "go-1-24"
+          - "go-1-25"
         os:
           - ubuntu-24.04
           - ubuntu-24.04-arm
