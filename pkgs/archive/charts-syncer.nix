@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "charts-syncer";
-  version = "2.1.2";
-  sha256 = "sha256-kt4nOM0hZiskFRzxM/8iyy+hr/o3yqJioAN9ZvB/e5M=";
-  vendorHash = "sha256-AlzDRPud2OixHb39B6tELWwYikELM95VnJy9t9cz2lI=";
+  version = "2.1.4";
+  sha256 = "sha256-4BF6NaGFWkWsgkzFSZlOKBjfZo5m5hlNqN7rTioac+g=";
+  vendorHash = "sha256-JOkU1n4uitVN5uzuz6ZglKfxMLJ6MuwlcVibXB9JqEc=";
   # keep-sorted end
   rev = "v" + version;
 in
