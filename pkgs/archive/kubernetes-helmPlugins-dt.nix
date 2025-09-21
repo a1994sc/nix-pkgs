@@ -8,9 +8,9 @@
 }:
 let
   pname = "helm-dt";
-  version = "0.4.6";
-  sha256 = "sha256-SB1XjWB2vYUUT9EvUCZM0dt4Q9J38lh6x6RQWjZCQXU=";
-  vendorHash = "sha256-aGFWyDq0HUlOF85VBRD7KN8/qm4iPsXau8W636h6meo=";
+  version = "0.4.8";
+  sha256 = "sha256-G2gJNsrw3NIQaZf+htSLHHCPeKWtbXQw5B7d+yI53uE=";
+  vendorHash = "sha256-CIVgNS74V75etC9WBzoxu6aoMHlUYxWd22h2NG1uNn0=";
   rev = "v" + version;
 in
 asciiBuildGoModule rec {
