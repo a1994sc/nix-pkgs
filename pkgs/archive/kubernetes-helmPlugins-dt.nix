@@ -8,8 +8,8 @@
 }:
 let
   pname = "helm-dt";
-  version = "0.4.8";
-  sha256 = "sha256-G2gJNsrw3NIQaZf+htSLHHCPeKWtbXQw5B7d+yI53uE=";
+  version = "0.4.9";
+  sha256 = "sha256-3zEu4fnvjM1SvyOyj6NzQteyfEh5X7ro/G0gkzt7ghY=";
   vendorHash = "sha256-CIVgNS74V75etC9WBzoxu6aoMHlUYxWd22h2NG1uNn0=";
   rev = "v" + version;
 in
