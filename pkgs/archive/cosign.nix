@@ -14,9 +14,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "cosign";
-  version = "2.6.0";
-  sha256 = "sha256-0Wl/+tSYGkp/UNByyQ396gxUSQ4lmC51v3t28gDwNnE=";
-  vendorHash = "sha256-1axjX8s1z6awjKLNYffOmLgltFZkbMFBBeFFigYWB9I=";
+  version = "2.6.1";
+  sha256 = "sha256-JQxVO7wZFyRovst3qb0EErDyIIhPNsIpBq/iQVf6djY=";
+  vendorHash = "sha256-7qVJMQI5htqMavrxFP2lQfQ/7b27bRWnNYg2cHmTZYE=";
   # keep-sorted end
   rev = "refs/tags/v" + version;
 in
