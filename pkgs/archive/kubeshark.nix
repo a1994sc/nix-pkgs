@@ -11,8 +11,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "kubeshark";
-  version = "52.8.1";
-  sha256 = "sha256-o11gVE+s2tVd2RLD6Otd23wt3l6HxBwoOfwhaaqttn8=";
+  version = "52.9.0";
+  sha256 = "sha256-avXEBOjxTfrWxyq3PQVs7DD+1Wo6fRPboUrpt/4Ud/U=";
   vendorHash = "sha256-4s1gxJo2w5BibZ9CJP7Jl9Z8Zzo8WpBokBnRN+zp8b4=";
   # keep-sorted end
   rev = "v" + version;
