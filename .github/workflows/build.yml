@@ -44,7 +44,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: chainguard-dev/actions/setup-gitsign@6f4f4de7549514e7b659741b30f6476f245600dd # v1.5.3
+      - uses: chainguard-dev/actions/setup-gitsign@7b18ea9960f945cabf19a84752e580829347f4ed # v1.5.4
 
       - name: Configure nix, Determinate Systems
         uses: DeterminateSystems/nix-installer-action@786fff0690178f1234e4e1fe9b536e94f5433196 # v31.4.1
@@ -78,7 +78,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: chainguard-dev/actions/setup-gitsign@6f4f4de7549514e7b659741b30f6476f245600dd # v1.5.3
+      - uses: chainguard-dev/actions/setup-gitsign@7b18ea9960f945cabf19a84752e580829347f4ed # v1.5.4
 
       - name: Configure nix, Determinate Systems
         uses: DeterminateSystems/nix-installer-action@786fff0690178f1234e4e1fe9b536e94f5433196 # v31.4.1
