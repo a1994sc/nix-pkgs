@@ -11,9 +11,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "talosctl";
-  version = "1.11.2";
-  sha256 = "sha256-wVlHJBJM6NY3rrr6wO43OiVLQKWJ23KQo6NySpH431g=";
-  vendorHash = "sha256-ZTAye+p8YrRZ/A1DjhuUNTUEh/L6NQhAD7LAjZG6bZs=";
+  version = "1.11.3";
+  sha256 = "sha256-1HMwzmt+5NeHI1sLokYzWJf840EtU9PxwqcSZu5O03M=";
+  vendorHash = "sha256-7L+sCT19HBAbYW4AYLwAoeHUkxBDfqx6IYIy9N69ZRA=";
   # keep-sorted end
   rev = "v" + version;
 in
