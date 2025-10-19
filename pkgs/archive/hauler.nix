@@ -14,9 +14,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "hauler";
-  version = "1.2.5";
-  sha256 = "sha256-9wRchzh3NY6ZbQgGC8xpE4DEni5bsNbJte1U84TBdKc=";
-  vendorHash = "sha256-/INOTAtHviJC9/x0UuEYYTFxTszXeupFOUrMnvOoo8M=";
+  version = "1.3.0";
+  sha256 = "sha256-26M8QMOtdSCvwdAMEvUCWt1sepOKeMDsK6M9i+nDyy0=";
+  vendorHash = "sha256-9FG482rHALaAmkToRN27kSV7/p2guko09TwFdpdoHGw=";
   # keep-sorted end
   rev = "v" + version;
   flag = {
