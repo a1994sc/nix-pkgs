@@ -10,9 +10,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "istioctl";
-  version = "1.27.1";
-  sha256 = "sha256-APUhW1PoNmfnbScoeVbsFY1R9jJT4wABpOjxtY5fFVc=";
-  vendorHash = "sha256-+dlZAO6odRCbsqm5Q172g4OMs9S4ovekajAoseHYZ94=";
+  version = "1.27.2";
+  sha256 = "sha256-o+rKTm1Yc2J+/uDp1DCkCpmOrODpfQ7bQ/FB62UyKfk=";
+  vendorHash = "sha256-AJzEAFZZe4QtuYRcIJ8GwosbBi5gWn+DAOpVS8JnAdQ=";
   # keep-sorted end
   rev = "v" + version;
 in
