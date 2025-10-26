@@ -15,9 +15,9 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "openbao";
-  version = "2.4.1";
-  sha256 = "sha256-HfPkjeScegylpA/i8KlS3t468pmD5sRwp2Ct164fkTo=";
-  vendorHash = "sha256-4SWpWGWoesUCgSpgOpblkxOpPbBC/grC2S1m7R9qasY=";
+  version = "2.4.3";
+  sha256 = "sha256-gutZATBAaMXOZM/fDwU+T1fajFI/OIuKX/Na217r5y4=";
+  vendorHash = "sha256-YxpWdwaPCk5mX8ZYJVNIG9end6/HkhXeGvgEq14cErY=";
   # keep-sorted end
   rev = "v" + version;
 in
