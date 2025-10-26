@@ -11,8 +11,8 @@
 let
   # keep-sorted start prefix_order=pname,version,
   pname = "cilium-cli";
-  version = "0.18.7";
-  sha256 = "sha256-zmVSryOp+4QDm83yJFwUld/NlZEHZtV0BJABqBcMirE=";
+  version = "0.18.8";
+  sha256 = "sha256-6/ECHhPV9rJHcHFVAvkwtlZi96rjhEe2PjEvXtv8OMY=";
   vendorHash = null;
   # keep-sorted end
   rev = "v" + version;
